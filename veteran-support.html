@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="logo.png" type="image/png" sizes="300x300">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0b0b0b">
+<title>Veteran Support &amp; Entitlements — Southern NSW | Veterans MC Federal Chapter</title>
+<meta name="description" content="Find veteran support and entitlements across Queanbeyan and Southern NSW: crisis lines, DVA cards, health, treatment travel, NSW rebates and concessions, claims help, housing and local Veteran & Family Hubs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Hero + search */
+  .vs-hero{padding:80px 0 40px}
+  .vs-search{position:relative;max-width:620px;margin-top:30px}
+  .vs-search input{width:100%;font:inherit;font-size:1.05rem;color:var(--text);background:var(--bg-2);border:1px solid #333;border-radius:999px;padding:17px 110px 17px 54px}
+  .vs-search input:focus{outline:none;border-color:var(--yellow);box-shadow:0 0 0 3px rgba(255,210,31,.18)}
+  .vs-search svg{position:absolute;left:20px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--muted);fill:none;stroke-width:2}
+  .vs-search button{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:var(--bg-3);color:#ddd;border-radius:999px;padding:10px 16px;font:600 .8rem/1 Inter;cursor:pointer;display:none}
+  .vs-search.has button{display:block}
+  .vs-count{margin-top:12px;font-size:.88rem;color:var(--muted);min-height:1.2em}
+  .quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .quick button{cursor:pointer;font:500 .82rem/1 Inter;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:none;color:#cfcfcf}
+  .quick button:hover{border-color:var(--yellow);color:var(--yellow)}
+
+  /* Crisis */
+  .crisis{background:linear-gradient(135deg,#1d1606,#121212 55%);border:1px solid #3a3210;border-radius:22px;padding:36px}
+  .crisis .top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:end;margin-bottom:26px}
+  .crisis h2{font-size:clamp(2.2rem,4.4vw,3.2rem)}
+  .calls{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(250px,100%),1fr));gap:12px}
+  .call{display:block;text-decoration:none;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:.2s}
+  .call:hover{border-color:var(--yellow);transform:translateY(-2px)}
+  .call b{display:block;font-size:1.3rem;color:var(--yellow);letter-spacing:.01em}
+  .call strong{display:block;font-size:.95rem;margin:4px 0 4px}
+  .call span{display:block;font-size:.83rem;color:var(--muted);line-height:1.45}
+  .call.sos{background:var(--yellow);border-color:var(--yellow)}
+  .call.sos b,.call.sos strong,.call.sos span{color:#000}
+  .call small{font:700 .62rem/1 Inter;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;float:right;margin-top:6px}
+
+  /* Section nav */
+  .secnav{position:sticky;top:72px;z-index:40;background:rgba(11,11,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .secnav ul{display:flex;gap:4px;overflow-x:auto;list-style:none;padding:10px 0;scrollbar-width:none}
+  .secnav ul::-webkit-scrollbar{display:none}
+  .secnav a{display:block;white-space:nowrap;padding:9px 14px;border-radius:999px;font-size:.85rem;font-weight:500;text-decoration:none;color:#bdbdbd}
+  .secnav a:hover{color:#fff;background:var(--bg-3)}
+  .secnav a.on{background:var(--yellow);color:#000}
+
+  /* Sections */
+  .vs-sec{padding:72px 0 8px;scroll-margin-top:140px}
+  .vs-sec .head{margin-bottom:30px}
+  .cards2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .ent{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;gap:10px}
+  .ent .tag{align-self:flex-start;font:700 .66rem/1 Inter;letter-spacing:.12em;text-transform:uppercase;color:var(--yellow);border:1px solid #3a3210;background:rgba(255,210,31,.07);padding:6px 10px;border-radius:6px}
+  .ent h3{font-size:1.65rem}
+  .ent p{color:#c4c4c4;font-size:.95rem}
+  .ent ul{color:#c4c4c4;font-size:.93rem;padding-left:18px}
+  .ent .how{margin-top:auto;background:var(--bg);border-radius:10px;padding:14px 16px;font-size:.9rem;color:#d6d6d6}
+  .ent .how b{display:block;font:700 .66rem/1 Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .ent .how a[href^="tel"]{color:var(--yellow);font-weight:700;text-decoration:none;white-space:nowrap}
+  .ent .links{display:flex;flex-wrap:wrap;gap:8px 16px}
+  .ent .links a{color:var(--yellow);font-weight:600;font-size:.9rem;text-decoration:none}
+  .ent .links a::after{content:" ↗";font-size:.8em}
+  .ent .links a:hover{text-decoration:underline}
+  .ent.hidden,.vs-sec.hidden{display:none}
+  mark{background:rgba(255,210,31,.32);color:inherit;border-radius:3px}
+
+  .callout{margin-top:18px;padding:18px 20px;border-left:3px solid var(--yellow);background:var(--bg-2);border-radius:0 12px 12px 0;color:#d6d6d6;font-size:.95rem}
+  .callout b{color:#fff}
+
+  /* Steps */
+  .six{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:six}
+  .six .ent{position:relative;padding-top:56px}
+  .six .ent::before{counter-increment:six;content:counter(six);position:absolute;top:20px;left:26px;width:28px;height:28px;border-radius:50%;background:var(--yellow);color:#000;font:700 .9rem/28px Inter;text-align:center}
+
+  /* Table */
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);margin-bottom:18px}
+  table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:760px}
+  th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font:700 .7rem/1.3 Inter;letter-spacing:.12em;text-transform:uppercase;color:var(--yellow);background:var(--bg-2)}
+  td{color:#c9c9c9}
+  td:first-child{color:#fff;font-weight:600}
+  tr:last-child td{border-bottom:0}
+  tr.hidden{display:none}
+
+  /* Checklist */
+  .check details{border:1px solid var(--line);border-radius:12px;background:var(--bg-2);margin-bottom:10px}
+  .check summary{cursor:pointer;list-style:none;padding:18px 20px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+  .check summary::-webkit-details-marker{display:none}
+  .check summary::after{content:"+";color:var(--yellow);font-size:1.4rem;line-height:1;transition:.2s}
+  .check details[open] summary::after{transform:rotate(45deg)}
+  .check details p{padding:0 20px 18px;color:#c4c4c4;font-size:.95rem}
+
+  .sources{columns:2 300px;column-gap:28px;list-style:none;margin-top:18px}
+  .sources li{break-inside:avoid;margin-bottom:10px}
+  .sources a{color:#cfcfcf;font-size:.92rem}
+  .sources a:hover{color:var(--yellow)}
+  .disclaimer{margin-top:28px;font-size:.85rem;color:var(--muted);max-width:80ch}
+  .noresults{display:none;text-align:center;padding:60px 0;color:var(--muted)}
+
+  @media (max-width:900px){.cards2,.six{grid-template-columns:1fr}.crisis{padding:26px}}
+</style>
+</head>
+<body data-page="support">
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="vs-hero phero plain">
+    <div class="wrap">
+      <span class="eyebrow">Veteran support &amp; entitlements · Southern NSW</span>
+      <h1>Find the support <em>you've earned.</em></h1>
+      <p class="lead">Queanbeyan, the Southern Tablelands, Monaro, Riverina and the South Coast — from DVA health care and treatment travel to NSW rates, power, transport, housing, advocacy and local veteran services.</p>
+      <div class="vs-search" id="searchBox">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input id="q" type="search" placeholder="Search e.g. Gold Card, rego, rates, housing…" aria-label="Search veteran support and entitlements">
+        <button type="button" id="clear">Clear</button>
+      </div>
+      <div class="quick" aria-label="Popular searches">
+        <button>Gold Card</button><button>Travel</button><button>Rates</button><button>Rego</button><button>Housing</button><button>Claims</button><button>Counselling</button>
+      </div>
+      <div class="vs-count" id="count" role="status"></div>
+    </div>
+  </section>
+
+  <section style="padding:10px 0 40px" id="now">
+    <div class="wrap">
+      <div class="crisis">
+        <div class="top">
+          <div><span class="eyebrow">Need help now?</span><h2>Talk to someone today.</h2></div>
+          <p class="muted" style="max-width:46ch">If you or someone else is in immediate danger, call 000. These services offer crisis, mental health, family violence and health support. Tap to call.</p>
+        </div>
+        <div class="calls" id="calls"></div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="secnav" aria-label="Sections">
+    <div class="wrap"><ul id="secnav"></ul></div>
+  </nav>
+
+  <div id="sections"></div>
+  <p class="noresults wrap" id="noresults">Nothing matched that search. Try a simpler word like "card", "travel" or "rates" — or call <a href="tel:1800011046" style="color:var(--yellow)">Open Arms on 1800 011 046</a> to talk it through.</p>
+
+  <section class="vs-sec" id="sources" style="padding-bottom:80px">
+    <div class="wrap">
+      <span class="eyebrow">Footnote</span>
+      <h2>Official sources &amp; currency</h2>
+      <p class="lead" style="margin-top:14px"><strong style="color:#fff">This is a navigation guide, not an eligibility decision.</strong></p>
+      <p class="muted" style="margin-top:12px;max-width:80ch">The Service NSW veteran guide used for the state programs, health and wellbeing services and concession links on this page was last published on 20 August 2026. Entitlements depend on service history, accepted conditions, DVA legislation, pension or payment status, card endorsements, residency, ownership and account-holder rules, and individual program criteria. Rates and programs change — use the linked official pages before relying on a dollar value or making a financial decision.</p>
+      <ul class="sources">
+        <li><a href="https://www.dva.gov.au/access-benefits/veteran-card">Department of Veterans' Affairs — Veteran Card</a></li>
+        <li><a href="https://www.dva.gov.au/what-we-help-with/health-support/travel-for-treatment">DVA — Travel for Treatment</a></li>
+        <li><a href="https://www.dva.gov.au/what-we-help-with/care-at-home-and-aged-care-services/living-independently/dva-in-home-programs/veterans-home-care-vhc">DVA — Veterans' Home Care</a></li>
+        <li><a href="https://www.service.nsw.gov.au/guide/veterans#health-and-wellbeing">Service NSW — Guide to concessions and services for veterans and their families</a></li>
+        <li><a href="https://www.service.nsw.gov.au/transaction/apply-for-the-low-income-household-rebate-retail-customers">Service NSW — Low Income Household Rebate</a></li>
+        <li><a href="https://www.service.nsw.gov.au/transaction/apply-for-pensioner-council-rates-rebates">Service NSW — Pensioner council rates rebates</a></li>
+        <li><a href="https://www.service.nsw.gov.au/transaction/claim-the-pensioner-water-rebate">Service NSW — Pensioner water rebate</a></li>
+        <li><a href="https://rsllifecare.org.au/veteran-services/veteran-family-hubs/queanbeyan">RSL LifeCare — Queanbeyan Veteran &amp; Family Hub</a></li>
+      </ul>
+      <p class="disclaimer">VMC Federal — Veteran Entitlements &amp; Support · General information only · Last reviewed 7 September 2026. If someone is in immediate danger call 000. For veteran and family mental health support, Open Arms is available 24/7 on 1800 011 046.</p>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="site.js"></script>
+<script>
+/* ---------- Content (from the live Veteran Support page) ---------- */
+const tel = (n, sms) => `<a href="${sms ? "sms" : "tel"}:${n.replace(/\D/g, "")}">${n}</a>`;
+
+const CALLS = [
+  ["000", "Emergency — Police / Ambulance / Fire", "Immediate danger, serious injury, medical emergency or immediate risk of harm.", true],
+  ["1800 011 046", "Open Arms — Veterans & Families Counselling", "24/7 free and confidential counselling for veterans and their families."],
+  ["1800 142 072", "Safe Zone Support", "24/7 anonymous counselling for current and ex-serving ADF members, veterans and families. You don't have to identify yourself."],
+  ["13 11 14", "Lifeline", "24/7 crisis and suicide-prevention support."],
+  ["0477 13 11 14", "Lifeline Text", "24/7 crisis support by text message.", false, true],
+  ["1300 659 467", "Suicide Call Back Service", "Suicide-prevention counselling and support."],
+  ["1800 011 511", "NSW Mental Health Line", "24/7 NSW mental-health assessment, advice and referral."],
+  ["1300 78 99 78", "MensLine Australia", "24/7 counselling for men: mental health, relationships, anger, stress, family violence and suicidal thoughts."],
+  ["1800 737 732", "1800RESPECT", "24/7 domestic, family and sexual violence support."],
+  ["0458 737 732", "1800RESPECT Text", "Text support for domestic, family and sexual violence.", false, true],
+  ["1800 656 463", "NSW Domestic Violence Line", "NSW domestic and family violence crisis assistance."],
+  ["1800 022 222", "Healthdirect", "24/7 advice from a registered nurse if you're unsure whether you need medical attention."]
+];
+
+const SECTIONS = [
+  { id: "start", nav: "Start here", eyebrow: "Six useful steps", title: "Start here", steps: true, cards: [
+    { title: "Get your Defence service records", desc: "Current ADF members can request records through ServiceConnect → My Service Records using myID. Former members can submit a Defence Personal Information Request.", how: `Defence Service Centre: ${tel("1800 333 362")}`, links: [["Request my service records", "https://www.defence.gov.au/about/accessing-information/personal-information-requests/personal-information-request-form"], ["Open ServiceConnect", "https://www.defence.gov.au/about/staff-resources/serviceconnect"]] },
+    { title: "Check your service", desc: "Permanent, Reserve and combined service can affect your DVA eligibility. Check all periods and types of service you've completed." },
+    { title: "Check your DVA card and status", desc: "Gold, White and Orange Cards, a Pensioner Concession Card, and TPI, EDA or War Widow/er status can affect the concessions and services available to you." },
+    { title: "Check MyService", desc: "Use MyService to check accepted conditions, lodge claims, view correspondence, download DVA letters and manage your details.", links: [["Open DVA MyService", "https://myservice.dva.gov.au/"]] },
+    { title: "Ask for free help", desc: "A Veteran Support Officer, qualified ESO advocate, RSL LifeCare or Legal Aid can help you understand or apply for entitlements. Avoid services that charge a percentage of your compensation." },
+    { title: "Check NSW concessions", desc: "Use the Service NSW Veterans Guide and Savings Finder to check travel, energy, rates, registration, licence, housing and other concessions.", links: [["NSW Veterans Guide", "https://www.service.nsw.gov.au/guide/veterans"], ["Run Savings Finder", "https://www.service.nsw.gov.au/services/savings-finder"]] }
+  ]},
+  { id: "cards", nav: "DVA cards", eyebrow: "Know what your card covers", title: "DVA cards & core entitlements", cards: [
+    { tag: "DVA", title: "Veteran White Card — specific conditions", desc: "Covers clinically required treatment for accepted service-related conditions. It can also carry eligible Non-Liability Health Care (NLHC) coverage, including mental health.", how: "Lodge an eligible claim through DVA MyService. A White Card is often issued after discharge or after DVA accepts a condition. For NLHC mental health, use the mental health treatment claim option or contact DVA.", links: [["DVA Veteran Card information", "https://www.dva.gov.au/access-benefits/veteran-card"]] },
+    { tag: "Gold Card", title: "Veteran Gold Card — all conditions", desc: "Clinically needed treatment for all medical conditions within Australia. It can also open access to NSW concessions, but individual concession eligibility still varies.", how: "DVA normally issues the card when eligibility is established. If you believe you qualify, check the Gold Card criteria and contact DVA or request the relevant claim form.", links: [["Check Gold Card eligibility", "https://www.dva.gov.au/access-benefits/veteran-card/veteran-card-all-conditions"]] },
+    { tag: "DVA", title: "Veteran Orange Card — pharmaceuticals only", desc: "For eligible Commonwealth and allied Second World War veterans. Concessions on prescription medicines, wound care items and nutritional supplements — not general medical treatment.", how: "Eligibility is specialised; contact DVA if you believe you qualify.", links: [["Orange Card details", "https://www.dva.gov.au/access-benefits/veteran-card/veteran-card-pharmaceuticals-only"]] },
+    { tag: "Potentially fully funded", title: "Non-Liability Health Care (NLHC)", desc: "Funds treatment without needing to prove ADF service caused the condition. Mental health eligibility includes current and former full-time ADF members and certain Reservists. Different rules apply to cancer and pulmonary tuberculosis.", how: "Sign in to MyService and lodge the relevant NLHC claim, or call DVA. For mental health you don't need to prove the condition was caused by service.", links: [["Go to MyService", "https://www.dva.gov.au/myservice"]] },
+    { tag: "Concession gateway", title: "DVA Pensioner Concession Card (PCC)", desc: "Issued with qualifying income-support payments such as Service Pension, Income Support Supplement or Age Pension. Unlocks cheaper medicines plus NSW transport, rates, utility, licence and registration concessions.", how: "DVA generally issues it when you receive a qualifying payment. If you think you should have one, contact DVA.", links: [["PCC details", "https://www.dva.gov.au/access-benefits/veteran-card/pensioner-concession-card"]] },
+    { tag: "State programs", title: "Service NSW Veteran Guide", desc: "Information on veteran programs and concessions in NSW. Some are open to all veterans; others have specific requirements, such as a Gold Card marked TPI or EDA. Most can be applied for online or by phone, and Service NSW can find other rebates through Savings Finder.", how: `Call Service NSW on ${tel("13 77 88")}, Monday–Friday, 7am–7pm Sydney time.`, links: [["Open the Service NSW veterans guide", "https://www.service.nsw.gov.au/guide/veterans#health-and-wellbeing"]] }
+  ], note: "<b>Important:</b> holding a DVA Veteran Gold Card does not automatically qualify you for every NSW concession. Some benefits need a DVA pension, a Gold Card marked TPI or EDA, a Pensioner Concession Card, a service-related disability, age criteria or another specific test. Always check the linked eligibility page before applying." },
+  { id: "health", nav: "Health", eyebrow: "DVA-funded services", title: "Health, medicines & support at home", cards: [
+    { tag: "Gold / White", title: "Medical, allied health, dental & optical", desc: "Gold Card holders can access clinically required treatment for all conditions; White Card treatment is limited to covered conditions. May include GP and specialist care, allied health, dental, optical and medicines where clinically indicated.", how: "Tell the provider you're a DVA Veteran Card holder before treatment. Ask whether they accept DVA arrangements and whether a GP referral or DVA prior approval is needed.", links: [["DVA health support", "https://www.dva.gov.au/what-we-help-with/health-support"]] },
+    { tag: "Free", title: "Open Arms counselling", desc: "Free, confidential, military-aware counselling, group programs and peer support for eligible veterans and families.", how: `Call ${tel("1800 011 046")} 24/7 or contact Open Arms online. In Queanbeyan, appointments are also offered through the Veteran and Family Hub.`, links: [["Open Arms", "https://www.openarms.gov.au/"]] },
+    { tag: "Free & anonymous", title: "Safe Zone Support", desc: "Anonymous counselling for current and ex-serving ADF personnel, veterans and families. You decide how much personal information to share.", how: `Call ${tel("1800 142 072")}, 24 hours a day.`, links: [["Safe Zone", "https://www.openarms.gov.au/safe-zone"]] },
+    { tag: "DVA home support", title: "Veterans' Home Care (VHC)", desc: "For eligible Veteran Card holders living at home with functional limitations: domestic assistance, personal care, respite, and home and garden maintenance.", how: `Request an assessment through the VHC Assessment Agency on ${tel("1300 550 450")}. Small co-payments can apply; respite has no co-payment.`, links: [["VHC details", "https://www.dva.gov.au/what-we-help-with/care-at-home-and-aged-care-services/living-independently/dva-in-home-programs/veterans-home-care-vhc"]] },
+    { tag: "DVA equipment", title: "Rehabilitation Appliances Program (RAP)", desc: "Clinically assessed aids, equipment and modifications to help you stay safe and independent — hearing and tinnitus devices, mobility aids, household equipment and some home modifications.", how: "Speak to your GP, OT, nurse or other qualified health professional. Items should be clinically assessed and prescribed before purchase.", links: [["RAP details", "https://www.dva.gov.au/what-we-help-with/care-at-home-and-aged-care-services/living-independently/dva-in-home-programs/aids-equipment-and-modifications-through-the-rehabilitation-appliances-program-rap"]] },
+    { tag: "DVA nursing", title: "Community nursing", desc: "DVA-funded community nursing for clinically assessed nursing or personal-care needs. Gold Card holders are covered for clinically required needs; White Card coverage must relate to eligible conditions.", how: "Ask your GP or treating provider about a referral to a DVA Community Nursing provider, or call DVA for eligibility guidance.", links: [["DVA care at home", "https://www.dva.gov.au/what-we-help-with/care-at-home-and-aged-care-services"]] },
+    { tag: "Specialist veteran health", title: "National Centre for Veterans' Healthcare", desc: "Integrated outpatient care for veterans at Concord Hospital, coordinated through case management. Regional and interstate veterans referred for treatment may be eligible to stay at Fussell House.", how: "Ask your GP or treating clinician about a referral. Confirm referral and accommodation requirements directly with the service.", links: [["National Centre for Veterans' Healthcare", "https://www.slhd.nsw.gov.au/Concord/NCVH/"]] },
+    { tag: "Free NSW service", title: "Get Healthy Service", desc: "Free phone-based health coaching for adults aged 16+ who want help setting and reaching health goals.", how: "Register through the NSW Healthy Living Programs page. It's a general NSW service, not limited to DVA card holders.", links: [["Healthy Living Programs", "https://www.nsw.gov.au/health-and-wellbeing/healthy-living/healthy-living-programs"]] },
+    { tag: "24-hour support", title: "Alcohol and Drug Information Service (ADIS)", desc: "NSW-wide information, counselling and referral for people concerned about alcohol or other drug use, including family members.", how: `Call ${tel("1800 250 015")} 24 hours a day. Web chat is available during listed weekday hours.`, links: [["ADIS", "https://yourroom.health.nsw.gov.au/getting-help/Pages/adis.aspx"]] },
+    { tag: "Family support", title: "Support for carers", desc: "Family members providing ongoing unpaid care may qualify for separate NSW services, concessions and support — particularly useful where a veteran needs help because of disability, chronic illness or mental health needs.", how: "Use the Service NSW Carers Guide to check services and concessions for the person providing care.", links: [["Service NSW Carers Guide", "https://www.service.nsw.gov.au/guide/carers"]] },
+    { tag: "Free vision support", title: "NSW Spectacles Program", desc: "Free glasses and vision aids for eligible people, including eligible DVA card holders.", how: "Check eligibility and the application process through Service NSW before ordering glasses or vision aids.", links: [["NSW Spectacles Program", "https://www.service.nsw.gov.au/referral/apply-for-the-nsw-spectacles-program"]] }
+  ]},
+  { id: "travel", nav: "Travel", eyebrow: "Treatment, free travel & concessions", title: "Travel & transport", cards: [
+    { tag: "DVA travel for treatment", title: "Treatment travel reimbursement", desc: "For eligible treatment on or after 1 July 2026, DVA can reimburse reasonable travel costs. Private vehicle travel is reimbursed at $0.68/km, and the former 50 km minimum no longer applies.", list: ["Private vehicle kilometre allowance", "Public or community transport, taxi or rideshare", "Parking and tolls in eligible circumstances", "Meals and accommodation where reasonably required"], how: "Claim through MyService or DVA's travel-for-treatment process. Keep appointment and expense records.", links: [["DVA Travel for Treatment", "https://www.dva.gov.au/what-we-help-with/health-support/travel-for-treatment"]] },
+    { tag: "No out-of-pocket if approved", title: "Booked Car with Driver (BCWD)", desc: "Eligible older or vulnerable Veteran Card holders may have transport pre-arranged and paid by DVA for covered treatment.", how: `Book through MyService, ask your health provider to arrange it, or call ${tel("1800 550 455")}.`, links: [["Check DVA transport options", "https://www.dva.gov.au/what-we-help-with/health-support/travel-for-treatment"]] },
+    { tag: "Gold Card", title: "Gold Opal — $2.50 daily cap", desc: "Gold Card holders can apply for a Gold Opal card for unlimited travel capped at $2.50 a day on the Opal network. Carry your Gold Card as proof of entitlement.", how: "Apply via Transport for NSW / Service NSW. Regional concessions may also be available.", links: [["Gold Opal details", "https://www.service.nsw.gov.au/referral/travel-concessions-dva-veteran-gold-card-holders"]] },
+    { tag: "Free travel if eligible", title: "Ex-defence disability travel card", desc: "Some ex-defence personnel with a service-related disability qualify for a Transport Concession Entitlement Card giving free travel on most NSW public transport.", how: "Apply through Transport for NSW with evidence of service-related disability.", links: [["Eligibility and application", "https://www.service.nsw.gov.au/referral/travel-concessions-ex-defence-personnel-with-a-disability"]] },
+    { tag: "Regional NSW", title: "Pensioner Travel Vouchers", desc: "Eligible NSW/ACT Pensioner Concession Card holders and NSW War Widow/er travel-card holders get 4 Pensioner Travel Vouchers per calendar year on NSW TrainLink.", how: "Register your eligible concession card with NSW TrainLink before booking.", links: [["NSW veterans concessions guide", "https://www.service.nsw.gov.au/guide/veterans"]] },
+    { tag: "Disability support", title: "Taxi, mobility parking & hospital parking", desc: "You may also qualify for the Taxi Transport Subsidy Scheme (TTSS), the Mobility Parking Scheme, or reduced parking fees at NSW public hospitals.", how: "Use the Service NSW veterans guide to check eligibility and how to apply for each scheme.", links: [["Check transport concessions", "https://www.service.nsw.gov.au/guide/veterans"]] }
+  ]},
+  { id: "money", nav: "Rebates", eyebrow: "NSW cost-of-living help", title: "Rates, power, gas & household rebates", table: [
+    ["Low Income Household Rebate", "Up to $285/year retail; $313.50/year embedded network", "DVA Gold Card or eligible PCC/HCC/LHCC; account generally in your name at your principal residence.", "Retail customer: ask your electricity retailer for the NSW Low Income Household Rebate. Embedded network: apply through Service NSW."],
+    ["NSW Gas Rebate", "$110/year", "DVA Gold Card or eligible concession card; principal residence and account conditions apply.", "Retail customer: call your gas retailer. Embedded/on-supply or eligible bottled LPG: apply through Service NSW."],
+    ["Medical Energy Rebate", "Up to $285/year", "Eligible concession card plus a medically assessed inability to self-regulate body temperature.", "Complete the application with your GP or specialist and lodge via the retail or embedded-network process."],
+    ["Life Support Energy Rebate", "Varies by approved equipment", "You or someone living with you needs approved energy-intensive life-support equipment at home.", "Ask your GP or specialist to complete the medical section; give the form to your retailer or apply via the embedded-network process."],
+    ["NSW council rates rebate", "Up to $250 rates + $87.50 water + $87.50 sewer", "PCC, or Gold Card marked TPI/EDA, or some War Widow/er / wholly dependent partner arrangements.", "Apply to your local council with your rates account and concession details."],
+    ["Pensioner water rebate", "Supplier/council dependent", "Owner-occupier with an eligible PCC, certain Gold Card endorsements, or a qualifying DVA letter.", "Apply to your water supplier or local council."],
+    ["Seniors Energy Rebate", "$200/year", "Commonwealth Seniors Health Card holders. Not for Gold Card/PCC holders using the Low Income Household Rebate.", "Apply through Service NSW if you meet the CSHC criteria."]
+  ], cards: [
+    { tag: "Queanbeyan-Palerang", title: "QPRC rates — local example", desc: "QPRC applies the NSW statutory pensioner concessions. For 2026–27, Council also approved an additional $60 voluntary pensioner rebate. Check your rates notice — the concession may already be applied.", how: `Apply through QPRC's pensioner rebate form or call ${tel("1300 735 025")}. Have your rates account and concession details ready.`, links: [["Apply for QPRC pensioner rebate", "https://www.qprc.nsw.gov.au/Rates-information/Pensioner-rebates"], ["2026–27 $60 rebate decision", "https://www.qprc.nsw.gov.au/News-Media/Council-Meeting-Summary-24-June-2026"]] },
+    { tag: "Free help", title: "Service NSW Savings Finder", desc: "Service NSW can review your circumstances and find rebates, vouchers and concessions you may be missing.", how: `Use Savings Finder online, book a free 45-minute appointment, or call ${tel("13 77 88")}.`, links: [["Start from the veterans guide", "https://www.service.nsw.gov.au/guide/veterans"]] }
+  ]},
+  { id: "driving", nav: "Licences & concessions", eyebrow: "Check the exact eligibility", title: "Driving, licences, recreation & other NSW concessions", cards: [
+    { tag: "Free if eligible", title: "Driver licence & tests", desc: "Eligible NSW pensioners and DVA clients may not pay for a driver licence, driving test, riding skills test, certain log books, Photo Card or Mobility Parking Permit application or renewal.", how: "Check your DVA pension eligibility with Transport for NSW / Service NSW. Concessions are for eligible NSW residents.", links: [["Check licence benefits", "https://www.service.nsw.gov.au/referral/check-the-transport-for-nsw-benefits-available-for-pensioners"]] },
+    { tag: "Potentially free", title: "Vehicle registration & motor vehicle tax", desc: "Eligible DVA pensioners can get a concession on one vehicle, including registration fees, motor vehicle tax, conditional registration and some inspection fees. Some also qualify for transfer and stamp-duty exemptions.", how: "When renewing or transferring, select Pensioner Concession. If eligibility can't be verified automatically, contact Service NSW.", links: [["Vehicle registration concessions", "https://www.service.nsw.gov.au/referral/find-out-about-vehicle-registration-concessions-for-pensioners"]] },
+    { tag: "Tolls", title: "E-Toll / easy toll concessions", desc: "Eligible concession holders can get E-Toll account concessions. Sydney Harbour Bridge/Tunnel toll exemption is limited to specific cases, including some TPI holders and modified vehicles with hand controls.", how: "Apply in person at a Service NSW Centre with your eligible card or DVA letter and E-Toll details.", links: [["E-Toll concession", "https://www.service.nsw.gov.au/transaction/apply-for-an-e-toll-account-concession"]] },
+    { tag: "Free vehicle entry", title: "NSW National Parks concession pass", desc: "DVA Veteran Card holders — Gold, White or Orange — can apply for a pass giving free car entry to NSW national parks that charge entry fees.", how: `Apply online with your DVA card number, or call National Parks on ${tel("1300 072 757")}.`, links: [["Apply for National Parks pass", "https://www.service.nsw.gov.au/transaction/apply-for-a-national-parks-concession-pass"]] },
+    { tag: "Fee exemption if eligible", title: "Recreational fishing", desc: "Eligible DVA card holders can be exempt from the NSW recreational fishing fee. Carry the required proof when fishing.", how: "Check the fee-exemption criteria before buying a licence; if exempt, carry your evidence instead.", links: [["Fishing licence information", "https://www.service.nsw.gov.au/services/recreational-fishing-licence"]] },
+    { tag: "Boating", title: "Boat, vessel & mooring concessions", desc: "Eligible DVA card holders may get 50% off a general boat driving licence, vessel registration and private mooring licence.", how: "Check the relevant Service NSW transaction and provide your DVA concession details.", links: [["NSW veterans guide", "https://www.service.nsw.gov.au/guide/veterans"]] },
+    { tag: "Licence fee", title: "Firearms licence fee exemption", desc: "Eligible DVA/pensioner card holders applying for NSW Category A, B or H firearms licences may claim a fee exemption. All normal licensing, genuine-reason, safety and suitability requirements still apply.", how: "Use the NSW firearms licence application or renewal process and provide a copy of your eligible card when requesting the exemption.", links: [["NSW licence requirements", "https://www.service.nsw.gov.au/transaction/apply-for-a-firearms-licence-individual"]] },
+    { tag: "Business discounts", title: "NSW Seniors Card / Senior Savers Card", desc: "If you meet NSW age and work criteria, these cards give discounts at thousands of participating businesses. A Veteran Gold Card can be used as one form of ID when applying.", how: "Apply through Service NSW. The two cards have different work-hour eligibility.", links: [["Apply / check eligibility", "https://www.service.nsw.gov.au/transaction/apply-for-a-nsw-seniors-card-or-nsw-senior-savers-card"]] },
+    { tag: "Disability", title: "NSW Companion Card", desc: "People with a significant and permanent disability who need attendant care may qualify. At participating venues, the companion gets a second ticket free.", how: "Apply through Service NSW with evidence of your ongoing need for attendant care.", links: [["See NSW veterans guide", "https://www.service.nsw.gov.au/guide/veterans"]] },
+    { tag: "Gold Card discounts", title: "Private business discounts", desc: "Some businesses offer discounts to Veteran Card holders, but these are voluntary and can change. There's no single guaranteed national list.", how: "Ask before you buy: \"Do you offer a DVA Veteran Gold Card or veteran discount?\" Also check NSW Seniors Card offers if eligible.", links: [["DVA concessions overview", "https://www.dva.gov.au/what-we-help-with/discounts-and-concessions"]] }
+  ]},
+  { id: "work-housing", nav: "Claims, housing & work", eyebrow: "Practical support beyond discounts", title: "Claims, legal help, housing, work & training", cards: [
+    { tag: "Free", title: "RSL LifeCare DVA claims & advocacy", desc: "Free help preparing and lodging DVA claims, gathering evidence and appealing rejected claims — face-to-face, by phone and online.", how: `Call ${tel("(02) 8088 0388")} or use the RSL LifeCare Veteran Services enquiry process.`, links: [["RSL LifeCare claims support", "https://rsllifecare.org.au/veteran-services/dva-claims-advocacy/"]] },
+    { tag: "Free legal advice", title: "Legal Aid NSW Veterans' Advocacy Service", desc: "Statewide specialist service for ADF members, former members and dependants. Independent advice on veteran-entitlement claims and appeals, and representation.", how: `Call ${tel("(02) 9219 5148")}. Regional veterans can also access it through local Legal Aid offices or an ESO.`, links: [["Veterans' Advocacy Service", "https://www.legalaid.nsw.gov.au/my-problem-is-about/my-right-as-a/veteran/veterans-advocacy-service"]] },
+    { tag: "Housing", title: "Rent Choice Veterans", desc: "For eligible former permanent ADF members who are homeless or at risk. Helps find a private rental and subsidises rent for up to 36 months, with education and employment support.", how: `Contact Homes NSW / Housing Response Centre on ${tel("1800 422 322")} or ask RSL LifeCare Veteran Services.`, links: [["Rent Choice Veterans", "https://www.nsw.gov.au/departments-and-agencies/homes-nsw/social-housing-resources/rent-choice-veterans"]] },
+    { tag: "Employment", title: "NSW Veterans Employment Program", desc: "Tools and guidance to help veterans translate military skills into NSW public-sector roles, including rank-to-grade and application support.", how: `Use the program resources or call the NSW Office for Veterans Affairs on ${tel("1300 838 233")}.`, links: [["Veterans Employment Program", "https://www.service.nsw.gov.au/transaction/learn-about-the-veterans-employment-program"]] },
+    { tag: "Fee-free options", title: "TAFE NSW — Ranks to Recognition", desc: "Free career counselling and recognition of prior learning, with pathways into TAFE NSW training from Certificate I to Advanced Diploma.", how: `Enquire through the Ranks to Recognition program. TAFE NSW general enquiries: ${tel("131 601")}.`, links: [["Ranks to Recognition", "https://www.tafensw.edu.au/programs/ranks-to-recognition"]] },
+    { tag: "Other concession", title: "Power of Attorney preparation", desc: "NSW Trustee and Guardian may prepare a Power of Attorney free for eligible pensioners.", how: "Check the Service NSW veterans guide and NSW Trustee and Guardian eligibility before booking.", links: [["See other NSW concessions", "https://www.service.nsw.gov.au/guide/veterans"]] }
+  ]},
+  { id: "local-help", nav: "Local help", eyebrow: "Face-to-face and regional support", title: "Where to get help in Southern NSW", cards: [
+    { tag: "Queanbeyan / Southern Tablelands", title: "Queanbeyan Veteran & Family Hub", desc: "Wellbeing support, DVA claims and advocacy, employment help, homelessness and housing support, and community programs. Open Arms counselling appointments are also offered here.", how: `251 Crawford Street, Queanbeyan NSW 2620 · ${tel("(02) 6263 9570")}`, links: [["Queanbeyan Hub", "https://rsllifecare.org.au/veteran-services/veteran-family-hubs/queanbeyan"]] },
+    { tag: "ACT access", title: "ACT Veteran & Family Hub", desc: "Operates in partnership with the Queanbeyan Hub and is available by appointment.", how: "26 Archibald Street, Lyneham ACT", links: [["ACT Hub information", "https://rsllifecare.org.au/veteran-services/veteran-family-hubs/act"]] },
+    { tag: "Riverina", title: "Riverina Veteran & Family Hub", desc: "Veteran and family wellbeing, advocacy and support services.", how: `240 Baylis Street, Wagga Wagga NSW 2650 · ${tel("(02) 5958 5471")}`, links: [["Riverina Hub", "https://rsllifecare.org.au/veteran-services/veteran-and-family-hubs/riverina-veteran-famiy-hub/"]] },
+    { tag: "South Coast", title: "Shoalhaven Veteran & Family Hub", desc: "Wellbeing, claims and advocacy, employment, housing and community support for veterans and families.", how: `124 Wallace Street, Nowra NSW 2541 · ${tel("(02) 4428 5777")}`, links: [["Shoalhaven Hub", "https://rsllifecare.org.au/veteran-services/veteran-family-hubs/shoalhaven/"]] },
+    { tag: "NSW-wide", title: "Service NSW — veteran concessions", desc: "The master NSW checklist for transport, licence, registration, energy, rates, water and other concessions.", how: `Call ${tel("13 77 88")} (Monday–Friday, 7am–7pm Sydney time) or apply online.`, links: [["Service NSW veterans guide", "https://www.service.nsw.gov.au/guide/veterans#health-and-wellbeing"]] },
+    { tag: "NSW-wide", title: "NSW Office for Veterans Affairs", desc: "Coordinates NSW veteran programs and can point veterans to state services.", how: `${tel("1300 838 233")} or ${tel("(02) 8688 0602")}`, links: [["NSW Office for Veterans Affairs", "https://www.veterans.nsw.gov.au/"]] },
+    { tag: "Free / community support", title: "Ex-Service Organisations (ESOs)", desc: "ESOs help veterans and families with DVA advocacy, welfare, financial assistance, employment advice, home or hospital visits, and links to aged-care and community services.", how: "Use DVA's ESO directory to find an organisation or advocate in Southern NSW. Ask whether advocacy is free before engaging anyone.", links: [["Find an ex-service organisation", "https://www.dva.gov.au/civilian-life/find-ex-service-organisation"]] }
+  ]},
+  { id: "gold-checklist", nav: "Gold Card checklist", eyebrow: "Things worth checking", title: "Gold Card holder — quick checklist", checklist: [
+    ["Health and treatment", "Use your Gold Card for clinically required treatment for all conditions in Australia. Before treatment, confirm the provider accepts DVA arrangements and whether a referral or prior approval is required."],
+    ["Travel for medical treatment", "Check DVA travel reimbursement for every covered appointment. From 1 July 2026, private vehicle travel is assessed at $0.68/km and the former 50 km minimum for private vehicle trips has been removed."],
+    ["Power and gas rebates", "Gold Card holders can qualify for the NSW Low Income Household Rebate and Gas Rebate where account and residence conditions are met. Medical and life-support rebates can be added if the medical criteria are met."],
+    ["Rates and water", "Don't assume a Gold Card alone is enough. Council rates usually require a PCC or a Gold Card marked TPI/EDA (with other special categories also covered). Water eligibility is broader in some cases. Apply directly with your council or water supplier."],
+    ["Transport and public transport", "Gold Card holders can apply for a Gold Opal card. Veterans with a qualifying service-related disability may instead qualify for free travel through an ex-defence Transport Concession Entitlement Card."],
+    ["Rego, licence and tolls", "These concessions depend on the underlying DVA pension or endorsement. Check eligibility rather than assuming the Gold Card itself is enough."],
+    ["National Parks and recreation", "Gold, White and Orange Veteran Card holders can apply for the NSW National Parks Concession Pass. Fishing, boating and some licence-fee concessions may also apply."]
+  ]}
+];
+
+/* ---------- Render ---------- */
+document.getElementById("calls").innerHTML = CALLS.map(([n, name, what, sos, sms]) =>
+  `<a class="call${sos ? " sos" : ""}" href="${sms ? "sms" : "tel"}:${n.replace(/\D/g, "")}"><small>${sms ? "Text" : "Call"}</small><b>${n}</b><strong>${name}</strong><span>${what}</span></a>`).join("");
+
+const card = c => `<article class="ent">${c.tag ? `<span class="tag">${c.tag}</span>` : ""}<h3>${c.title}</h3><p>${c.desc}</p>${
+  c.list ? `<ul>${c.list.map(l => `<li>${l}</li>`).join("")}</ul>` : ""}${
+  c.how ? `<div class="how"><b>How to get it</b>${c.how}</div>` : ""}${
+  c.links ? `<div class="links">${c.links.map(([t, u]) => `<a href="${u}" target="_blank" rel="noopener">${t}</a>`).join("")}</div>` : ""}</article>`;
+
+document.getElementById("sections").innerHTML = SECTIONS.map(s => `
+  <section class="vs-sec" id="${s.id}">
+    <div class="wrap">
+      <div class="head"><div><span class="eyebrow">${s.eyebrow}</span><h2>${s.title}</h2></div></div>
+      ${s.table ? `<div class="tablewrap"><table><thead><tr><th>Benefit</th><th>Value / concession</th><th>Typical veteran eligibility</th><th>How to get it</th></tr></thead><tbody>${
+        s.table.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>` : ""}
+      ${s.checklist ? `<div class="check">${s.checklist.map(([t, d], i) => `<details class="ent-like"${i === 0 ? " open" : ""}><summary>${t}</summary><p>${d}</p></details>`).join("")}</div>` : ""}
+      ${s.cards ? `<div class="${s.steps ? "six" : "cards2"}">${s.cards.map(card).join("")}</div>` : ""}
+      ${s.note ? `<div class="callout">${s.note}</div>` : ""}
+    </div>
+  </section>`).join("");
+
+const nav = document.getElementById("secnav");
+nav.innerHTML = SECTIONS.map(s => `<li><a href="#${s.id}" data-id="${s.id}">${s.nav}</a></li>`).join("") + `<li><a href="#sources" data-id="sources">Sources</a></li>`;
+
+/* Scroll-spy for the section nav */
+const links = [...nav.querySelectorAll("a")];
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) {
+    links.forEach(a => a.classList.toggle("on", a.dataset.id === e.target.id));
+    const on = nav.querySelector("a.on"); if (on) on.scrollIntoView({ block: "nearest", inline: "center" });
+  }
+}), { rootMargin: "-45% 0px -50% 0px" });
+document.querySelectorAll(".vs-sec").forEach(s => spy.observe(s));
+
+/* ---------- Search ---------- */
+const q = document.getElementById("q"), box = document.getElementById("searchBox"), countEl = document.getElementById("count"), none = document.getElementById("noresults");
+const items = [...document.querySelectorAll(".ent, .check details, tbody tr")].map(el => ({ el, html: el.innerHTML, text: el.textContent.toLowerCase() }));
+const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+function highlight(html, terms) {
+  if (!terms.length) return html;
+  const re = new RegExp(`(${terms.map(esc).join("|")})`, "gi");
+  return html.replace(/>([^<]+)</g, (m, t) => ">" + t.replace(re, "<mark>$1</mark>") + "<");
+}
+function search(v) {
+  const terms = v.toLowerCase().trim().split(/\s+/).filter(Boolean);
+  box.classList.toggle("has", terms.length > 0);
+  // Everyday words → the official wording used in the content
+  const ALIAS = { rego: ["rego", "registration"], dentist: ["dentist", "dental"], glasses: ["glasses", "spectacles", "optical"], mental: ["mental", "counselling"], psych: ["psych", "mental", "counselling"], house: ["house", "housing", "home"], job: ["job", "employment", "career"], jobs: ["jobs", "employment", "career"], lawyer: ["lawyer", "legal"], power: ["power", "energy", "electricity"], bus: ["bus", "opal", "transport"], train: ["train", "trainlink", "opal", "transport"] };
+  const groups = terms.map(t => ALIAS[t] || [t]);
+  let n = 0;
+  items.forEach(it => {
+    const hit = groups.every(g => g.some(t => it.text.includes(t)));
+    it.el.classList.toggle("hidden", !hit);
+    it.el.innerHTML = hit ? highlight(it.html, groups.flat()) : it.html;
+    if (hit) n++;
+  });
+  document.querySelectorAll("#sections .vs-sec").forEach(s => s.classList.toggle("hidden", !s.querySelector(".ent:not(.hidden), details:not(.hidden), tbody tr:not(.hidden)")));
+  document.querySelectorAll(".tablewrap").forEach(t => t.style.display = t.querySelector("tbody tr:not(.hidden)") ? "" : "none");
+  if (terms.length) {
+    document.querySelectorAll(".check details:not(.hidden)").forEach(d => d.open = true);
+    countEl.textContent = n ? `${n} result${n === 1 ? "" : "s"} for "${v.trim()}"` : "";
+    none.style.display = n ? "none" : "block";
+  } else { countEl.textContent = ""; none.style.display = "none"; }
+}
+let tm; q.addEventListener("input", () => { clearTimeout(tm); tm = setTimeout(() => search(q.value), 120); });
+document.getElementById("clear").onclick = () => { q.value = ""; search(""); q.focus(); };
+document.querySelectorAll(".quick button").forEach(b => b.onclick = () => {
+  q.value = b.textContent; search(q.value);
+  const first = document.querySelector("#sections .vs-sec:not(.hidden)"); if (first) first.scrollIntoView({ behavior: "smooth" });
+});
+</script>
+</body>
+</html>

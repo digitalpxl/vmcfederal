@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="logo.png" type="image/png" sizes="300x300">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0b0b0b">
+<title>2026 Tour of Duty Poker Run — Ride for Remembrance | Veterans MC Federal Chapter</title>
+<meta name="description" content="Thank you to everyone who rode with Veterans MC Federal Chapter in the 2026 Tour of Duty Poker Run — a Ride for Remembrance. Photos, video and supporters gear.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Hero */
+  .r-hero{position:relative;min-height:86vh;display:flex;align-items:flex-end;padding:0 0 80px;
+    background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.55) 50%,var(--bg) 100%),
+    url("https://www.vmcfederal.com.au/wp-content/uploads/2026/11/PR-26-47.jpg") center/cover no-repeat}
+  .r-hero h1{font-size:clamp(4rem,11vw,9rem)}
+  .r-hero h1 em{font-style:normal;color:var(--yellow)}
+  .r-hero .tag{font:700 .9rem/1 Inter;letter-spacing:.32em;text-transform:uppercase;margin:20px 0 16px}
+  .r-hero .tag b{color:var(--yellow)}
+  .r-hero p{max-width:54ch;font-size:1.12rem;color:#e0e0e0}
+  .r-hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+  .stamp{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--yellow);color:var(--yellow);border-radius:999px;padding:8px 16px;font:700 .75rem/1 Inter;letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px;background:rgba(0,0,0,.4)}
+  .stamp::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--yellow)}
+
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:-40px;position:relative;z-index:2;background:var(--bg-2)}
+  .stats div{padding:24px 26px;border-right:1px solid var(--line)}
+  .stats div:last-child{border-right:0}
+  .stats small{font:700 .7rem/1 Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow)}
+  .stats b{display:block;font-family:"Bebas Neue";font-size:2rem;letter-spacing:.02em;margin-top:8px;line-height:1}
+
+  /* Thank you */
+  .thanks{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+  .thanks h2{position:sticky;top:110px}
+  .letter p{color:#cfcfcf}
+  .letter p+p{margin-top:16px}
+  .letter .first{font-size:1.2rem;color:#fff}
+  .creed{margin-top:36px;padding:30px 32px;border-left:3px solid var(--yellow);background:var(--bg-2);border-radius:0 var(--radius) var(--radius) 0;font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-size:1.3rem;line-height:1.6;color:#eee}
+  .sign{margin-top:24px;font-weight:600}
+  .sign span{display:block;color:var(--muted);font-weight:400;font-size:.92rem}
+
+  /* Sponsor band */
+  .sponsorband{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;background:var(--bg-2);border:1px solid var(--line);border-radius:20px;padding:30px 36px}
+  .sponsorband img{height:84px;width:auto;background:#fff;border-radius:10px;padding:10px}
+  .sponsorband .l{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+
+  /* Video */
+  .feature-video{max-width:980px;margin:40px auto 0}
+
+  /* Gear */
+  .gear{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
+  .product{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:.25s}
+  .product:hover{border-color:var(--yellow);transform:translateY(-4px)}
+  .product .ph{aspect-ratio:1;overflow:hidden;background:#fff}
+  .product img{width:100%;height:100%;object-fit:cover;transition:.5s}
+  .product:hover img{transform:scale(1.05)}
+  .product .b{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .product small{font:700 .68rem/1 Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow)}
+  .product h3{font-size:1.5rem}
+  .product .buy{margin-top:auto;padding-top:10px;font-weight:600;font-size:.9rem;color:var(--yellow)}
+  .product .buy::after{content:" →"}
+
+  @media (max-width:1000px){
+    .stats{grid-template-columns:1fr 1fr}
+    .stats div:nth-child(2){border-right:0}
+    .stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .thanks{grid-template-columns:1fr;gap:28px}
+    .thanks h2{position:static}
+    .gear{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:560px){
+    .gear{grid-template-columns:1fr 1fr;gap:12px}
+    .product h3{font-size:1.2rem}
+    .sponsorband{padding:24px}
+    .stamp{font-size:.62rem;letter-spacing:.08em;padding:8px 12px}
+    .r-hero .tag{letter-spacing:.18em;font-size:.78rem}
+  }
+</style>
+</head>
+<body data-page="pokerrun" data-cta-label="2027 Poker Run" data-cta-href="poker-run.html">
+<div id="site-header"></div>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="r-hero">
+    <div class="wrap">
+      <span class="stamp">Ride complete · Saturday 14 November 2026</span>
+      <span class="eyebrow">Tour of Duty · Ride for Remembrance</span>
+      <h1>2026 <em>Poker Run</em></h1>
+      <div class="tag">Respect <b>·</b> Remembrance <b>·</b> Brotherhood</div>
+      <p>Thank you for standing with us, riding with us, and honouring those we remember.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#gallery">View the photos</a>
+        <a class="btn btn-ghost" href="#gear">Supporters gear</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="stats reveal">
+      <div><small>Date</small><b>14 Nov 2026</b></div>
+      <div><small>The ride</small><b>Ride for Remembrance</b></div>
+      <div><small>Photos</small><b><span id="photoCount">52</span> from the day</b></div>
+      <div><small>Major sponsor</small><b>Twenty20 Risk</b></div>
+    </div>
+  </div>
+
+  <!-- THANK YOU -->
+  <section id="thanks">
+    <div class="wrap thanks">
+      <div class="reveal">
+        <span class="eyebrow">From the Federal Chapter</span>
+        <h2>Thank you for riding with us.</h2>
+      </div>
+      <div class="letter reveal">
+        <p class="first">VMC Federal extends our sincere respect and appreciation to everyone who rolled out and stood alongside us for the 2026 Ride for Remembrance.</p>
+        <p>Every rider, every supporter and every person who took the time to be part of the day helped make it something truly special. It's more than just a ride — it's about honouring those who came before us, remembering those we've lost, and standing together for those who are still with us.</p>
+        <p>To our sponsors and supporters: we owe you a massive thank you. Your generosity, loyalty and unwavering support are the backbone of events like this. Whether your contribution was big, small or behind the scenes, it did not go unnoticed. Without people and businesses like you beside us, these events simply wouldn't be possible.</p>
+        <p>To everyone who organised, volunteered, lent a hand or just turned up to show support — you are what makes this community what it is.</p>
+        <div class="creed">We ride for those who no longer can. We remember those who served. And we honour those who never made it home.</div>
+        <div class="sign">Veterans MC Federal Chapter<span>Service. Brotherhood. Respect.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSOR -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sponsorband reveal">
+        <div class="l">
+          <img src="https://www.vmcfederal.com.au/wp-content/uploads/2026/11/Screenshot-2026-08-23-102638.png" alt="Twenty20 Risk Navigators">
+          <div><span class="eyebrow" style="margin-bottom:8px">Proudly sponsored by</span><h3>Twenty20 Risk Navigators</h3><p class="muted">2026 major sponsor of the Tour of Duty Poker Run.</p></div>
+        </div>
+        <a class="btn btn-ghost" href="https://twenty20risk.com.au/" target="_blank" rel="noopener">Visit Twenty20</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="media" id="video">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center">
+        <span class="eyebrow">Watch</span>
+        <h2>Relive the ride</h2>
+      </div>
+      <div class="feature-video reveal">
+        <button class="video" data-id="n27CmBcE-6U" aria-label="Play the 2026 Poker Run video">
+          <img src="https://i.ytimg.com/vi/n27CmBcE-6U/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">2026 Tour of Duty Poker Run</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="head reveal" style="margin-bottom:0">
+        <div><span class="eyebrow">On the day</span><h2>Photo gallery</h2></div>
+        <p class="muted" style="max-width:44ch">Spot yourself? Tap any photo to view it full size. Tag us on <a href="https://www.facebook.com/VMCFederal/" style="color:var(--yellow)">Facebook</a> or <a href="https://www.instagram.com/veterans_mc_federal/" style="color:var(--yellow)">Instagram</a>.</p>
+      </div>
+      <div class="gallery" id="gal"></div>
+    </div>
+  </section>
+
+  <!-- GEAR -->
+  <section class="pillars" id="gear">
+    <div class="wrap">
+      <div class="head reveal" style="margin-bottom:0">
+        <div><span class="eyebrow">Wear it with pride</span><h2>Grab your supporters gear</h2></div>
+        <p class="muted" style="max-width:44ch">Limited 2026 Tour of Duty merch. Every purchase helps the chapter keep supporting veterans and their families.</p>
+      </div>
+      <div class="gear">
+        <a class="product reveal" href="https://square.link/u/YZxFSfp4" target="_blank" rel="noopener">
+          <div class="ph"><img src="https://www.vmcfederal.com.au/wp-content/uploads/2026/11/shirt.jpeg" alt="2026 Tour of Duty Poker Run T-shirt" loading="lazy"></div>
+          <div class="b"><small>Apparel</small><h3>2026 Poker Run T-shirt</h3><span class="buy">Buy now</span></div>
+        </a>
+        <a class="product reveal" href="https://square.link/u/2KaPFqgx" target="_blank" rel="noopener">
+          <div class="ph"><img src="https://www.vmcfederal.com.au/wp-content/uploads/2026/11/Shirt-Option-1-AL1.jpg" alt="Support Your Local Veterans shirt" loading="lazy"></div>
+          <div class="b"><small>Apparel</small><h3>Support Your Local Veterans shirt</h3><span class="buy">Buy now</span></div>
+        </a>
+        <a class="product reveal" href="https://square.link/u/PncLIp6V" target="_blank" rel="noopener">
+          <div class="ph"><img src="https://www.vmcfederal.com.au/wp-content/uploads/2026/11/coin.jpeg" alt="2026 Tour of Duty challenge coin" loading="lazy"></div>
+          <div class="b"><small>Collectable</small><h3>2026 Poker Run coin</h3><span class="buy">Buy now</span></div>
+        </a>
+        <a class="product reveal" href="https://square.link/u/YGmEIvim" target="_blank" rel="noopener">
+          <div class="ph"><img src="https://www.vmcfederal.com.au/wp-content/uploads/2026/11/original.jpeg" alt="Tour of Duty Poker Run patch" loading="lazy"></div>
+          <div class="b"><small>Collectable</small><h3>2026 Poker Run patch</h3><span class="buy">Buy now</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORTERS -->
+  <section id="supporters">
+    <div class="wrap">
+      <div class="head reveal" style="margin-bottom:0"><div><span class="eyebrow">Respect to those who backed the ride</span><h2>Our 2026 supporters</h2></div></div>
+      <div class="chips reveal">
+        <span>Twenty20 Risk Navigators</span><span>Valhalla Tactical &amp; Outdoor</span><span>Vikings Erindale</span><span>Zarkie</span><span>Error 404 Media</span><span>Zorba Waterfront Motel</span><span>Alive Health &amp; Fitness</span><span>AMX – All Motorcycle X-cessories</span><span>The Durham Castle Arms / Ale Mary Brewing Co.</span><span>El Tigeros Spanish Restaurant</span><span>Indepth Scuba Canberra</span><span>Jim Murphy</span><span>Curtin Optical</span><span>Nug Nug</span><span>RiderNav</span><span>Digital PXL</span><span>Seaforce</span><span>The Tradies Dickson</span><span>Tuggeranong Motorcycles</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT -->
+  <section class="ctaband">
+    <div class="wrap">
+      <span class="eyebrow" style="color:#000;opacity:.7">Saturday 13 November 2027 · Queanbeyan</span>
+      <h2>See you on the road<br>in 2027.</h2>
+      <p>The Tour of Duty rolls out again next November. All riders, all machines — bring your crew.</p>
+      <div class="ctas">
+        <a class="btn btn-dark" href="poker-run.html">2027 ride details</a>
+        <a class="btn btn-line" href="https://square.link/u/5ZFwjYzO">Register now</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="site.js"></script>
+<script>
+  // Gallery: hi-res set (44–52) first, then the rest
+  const U = "https://www.vmcfederal.com.au/wp-content/uploads/2026/11/";
+  const photos = [];
+  [47,44,45,46,48,49,50,51,52].forEach(n => {
+    const portrait = n === 48 || n === 49;
+    photos.push({ thumb: `${U}PR-26-${n}-${portrait ? "768x1024" : "1024x768"}.jpg`, full: `${U}PR-26-${n}.jpg` });
+  });
+  for (let n = 1; n <= 43; n++) {
+    const f = `${U}PR26-${String(n).padStart(2,"0")}.jpeg`;
+    photos.push({ thumb: f, full: f });
+  }
+  VMC.gallery(document.getElementById("gal"), photos, { initial: 16, label: "2026 Poker Run photo" });
+  document.getElementById("photoCount").textContent = photos.length;
+</script>
+</body>
+</html>

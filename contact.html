@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="logo.png" type="image/png" sizes="300x300">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0b0b0b">
+<title>Contact | Veterans MC Federal Chapter</title>
+<meta name="description" content="Contact Veterans MC Federal Chapter. Clubhouse at 36 Thurralilly Street, Queanbeyan — entry via High Place off High Street.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .contact-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}
+  .formcard{background:var(--bg-2);border:1px solid var(--line);border-radius:20px;padding:40px}
+  .formcard h2{font-size:clamp(2rem,3.6vw,2.8rem)}
+  .note{font-size:.88rem;color:var(--muted);margin:10px 0 26px;padding:12px 14px;border:1px solid #3a3210;background:rgba(255,210,31,.06);border-radius:10px}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:flex;flex-direction:column;gap:7px}
+  .field.full{grid-column:1/-1}
+  .field label{font:600 .8rem/1 Inter;letter-spacing:.06em;color:#d6d6d6}
+  .field label .req{color:var(--yellow)}
+  .field input,.field select,.field textarea{font:inherit;font-size:1rem;color:var(--text);background:var(--bg);border:1px solid #333;border-radius:10px;padding:13px 14px;transition:.2s;width:100%}
+  .field textarea{min-height:150px;resize:vertical}
+  .field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--yellow) 50%),linear-gradient(135deg,var(--yellow) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--yellow);box-shadow:0 0 0 3px rgba(255,210,31,.18)}
+  .field .err{font-size:.8rem;color:#ff8a7a;min-height:1em}
+  .field.bad input,.field.bad select,.field.bad textarea{border-color:#ff8a7a}
+  .hp{position:absolute;left:-9999px}
+  .submitrow{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:24px}
+  .submitrow small{color:var(--muted)}
+  .submitrow button{border:0;cursor:pointer}
+  .status{margin-top:18px;padding:14px 16px;border-radius:10px;display:none}
+  .status.show{display:block;background:rgba(255,210,31,.1);border:1px solid #3a3210;color:#f2e6b0}
+
+  .side{display:grid;gap:20px}
+  .infocard{background:var(--bg-2);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+  .infocard img{width:100%;aspect-ratio:16/9;object-fit:cover}
+  .infocard .b{padding:24px 26px}
+  .infocard h3{font-size:1.7rem;margin-bottom:8px}
+  .infocard p{color:var(--muted);font-size:.95rem}
+  .addr{display:flex;gap:12px;margin:14px 0 18px;font-weight:600}
+  .addr svg{flex:none;width:22px;height:22px;stroke:var(--yellow);fill:none;stroke-width:1.8}
+  .mapwrap{position:relative;height:240px;border-top:1px solid var(--line)}
+  .mapwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.6) invert(.92) hue-rotate(180deg) contrast(.9)}
+  .mission{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .mission img{border-radius:var(--radius);width:100%;aspect-ratio:4/3;object-fit:cover}
+  @media (max-width:960px){.contact-grid,.mission{grid-template-columns:1fr}}
+  @media (max-width:560px){.fields{grid-template-columns:1fr}.formcard{padding:26px}}
+</style>
+</head>
+<body data-page="about" data-cta-label="Veteran support" data-cta-href="veteran-support.html">
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="phero plain" style="padding:90px 0 50px">
+    <div class="wrap">
+      <span class="eyebrow">Get in touch</span>
+      <h1>Contact the <em>Federal Chapter</em></h1>
+      <p class="lead">Questions about membership, events, sponsorship or veteran support — send us a message or drop into the clubhouse in Queanbeyan.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:20px">
+    <div class="wrap contact-grid">
+      <div class="formcard reveal">
+        <span class="eyebrow">Send a message</span>
+        <h2>How can we help?</h2>
+        <p class="note">Please don't include sensitive medical, financial or identification information. Messages are read by chapter volunteers, so allow a little time for a reply.</p>
+        <form id="cform" novalidate>
+          <div class="fields">
+            <div class="field"><label for="name">Name <span class="req">*</span></label><input id="name" name="your-name" autocomplete="name" required><span class="err"></span></div>
+            <div class="field"><label for="email">Email address <span class="req">*</span></label><input id="email" name="your-email" type="email" autocomplete="email" required><span class="err"></span></div>
+            <div class="field"><label for="phone">Phone number</label><input id="phone" name="your-phone" type="tel" autocomplete="tel"><span class="err"></span></div>
+            <div class="field"><label for="type">Enquiry type <span class="req">*</span></label>
+              <select id="type" name="enquiry-type" required>
+                <option value="">Select an enquiry type</option>
+                <option>General enquiry</option><option>Veteran membership enquiry</option><option>Supporter enquiry</option><option>Veteran support</option><option>Chapter event</option><option>Community organisation</option><option>Sponsorship enquiry</option><option>Website enquiry</option>
+              </select><span class="err"></span></div>
+            <div class="field full"><label for="msg">Message <span class="req">*</span></label><textarea id="msg" name="your-message" required></textarea><span class="err"></span></div>
+            <div class="field full"><label for="word">Spam check: type the word <b style="color:var(--yellow)">MOTORCYCLE</b> <span class="req">*</span></label><input id="word" name="random-word-check" autocomplete="off" required><span class="err"></span></div>
+            <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          </div>
+          <div class="submitrow">
+            <small>* Required · See our <a href="privacy-policy.html" style="color:var(--yellow)">Privacy Policy</a> for how we handle your details.</small>
+            <button class="btn btn-primary" type="submit">Send message</button>
+          </div>
+          <div class="status" id="status" role="status"></div>
+        </form>
+      </div>
+
+      <aside class="side">
+        <div class="infocard reveal">
+          <img src="https://www.vmcfederal.com.au/wp-content/themes/vmc-federal-theme/assets/images/vmc-clubhouse.jpg" alt="The Federal Chapter clubhouse">
+          <div class="b">
+            <span class="eyebrow" style="margin-bottom:8px">Visit us</span>
+            <h3>The Club House</h3>
+            <div class="addr"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-10a6 6 0 0 1 12 0c0 4.7-6 10-6 10Z"/><circle cx="12" cy="11" r="2.2"/></svg>36 Thurralilly Street,<br>Queanbeyan NSW 2620</div>
+            <p>Entry to the Coral–Balmoral Bar, the Club House and the car park is via <b style="color:#fff">High Place, off High Street</b>.</p>
+            <a class="btn btn-ghost" style="margin-top:18px" href="https://www.google.com/maps/search/?api=1&query=36%20Thurralilly%20Street%2C%20Queanbeyan%20NSW%202620%2C%20Australia" target="_blank" rel="noopener">Open in Google Maps</a>
+          </div>
+          <div class="mapwrap"><iframe title="Map: 36 Thurralilly Street, Queanbeyan" loading="lazy" src="https://www.google.com/maps?q=36%20Thurralilly%20Street%2C%20Queanbeyan%20NSW%202620%2C%20Australia&output=embed"></iframe></div>
+        </div>
+        <div class="infocard reveal">
+          <div class="b">
+            <span class="eyebrow" style="margin-bottom:8px">Follow along</span>
+            <h3>Socials</h3>
+            <p>Events, ride updates and photos are posted first on Facebook and Instagram.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+              <a class="btn btn-ghost" href="https://www.facebook.com/VMCFederal/" target="_blank" rel="noopener">Facebook</a>
+              <a class="btn btn-ghost" href="https://www.instagram.com/veterans_mc_federal/" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="help" aria-label="Get support">
+    <div class="wrap row">
+      <div><h3>Need help right now?</h3><p>Don't wait on a reply. Free, confidential support for veterans and families is available 24/7.</p></div>
+      <div class="nums">
+        <a class="num" href="tel:1800011046"><b>1800 011 046</b><span>Open Arms · 24/7</span></a>
+        <a class="num" href="tel:000"><b>000</b><span>Emergency</span></a>
+        <a class="num" href="veteran-support.html"><b>All support →</b><span>Services &amp; entitlements</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap mission">
+      <img class="reveal" src="https://www.vmcfederal.com.au/wp-content/themes/vmc-federal-theme/assets/images/vmc-mission.jpg" alt="Veterans Motorcycle Club members">
+      <div class="reveal">
+        <span class="eyebrow">Our mission</span>
+        <h2>One family, on and off our bikes.</h2>
+        <p class="lead" style="margin-top:18px">We are the Veterans Motorcycle Club — a brotherhood of military veteran bikers bonded by service, honour and the open road.</p>
+        <p class="muted" style="margin-top:12px">Our mission is to support fellow veterans, their families and the community.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pillars">
+    <div class="wrap mission">
+      <div class="reveal">
+        <span class="eyebrow">Membership</span>
+        <h2>Not in the Canberra region?</h2>
+        <p class="lead" style="margin-top:18px">If you're looking to join and you're outside the Canberra area, check whether there's a Veterans MC chapter near you.</p>
+        <p class="muted" style="margin-top:12px">Most chapters are also on social media.</p>
+        <a class="btn btn-primary" style="margin-top:24px" href="find-a-chapter.html">Find a chapter</a>
+      </div>
+      <img class="reveal" src="https://www.vmcfederal.com.au/wp-content/themes/vmc-federal-theme/assets/images/vmc-membership.jpg" alt="Veterans MC riders">
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="site.js"></script>
+<script>
+  // Front-end validation only. In the live build this posts to the existing Contact Form 7 form.
+  const form = document.getElementById("cform"), status = document.getElementById("status");
+  const rules = {
+    name: v => v.trim() ? "" : "Please enter your name.",
+    email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? "" : "Please enter a valid email address.",
+    type: v => v ? "" : "Please choose an enquiry type.",
+    msg: v => v.trim().length >= 10 ? "" : "Please add a little more detail.",
+    word: v => v.trim().toUpperCase() === "MOTORCYCLE" ? "" : "Please type MOTORCYCLE."
+  };
+  function check(id) {
+    const el = document.getElementById(id), msg = rules[id](el.value), f = el.closest(".field");
+    f.classList.toggle("bad", !!msg); f.querySelector(".err").textContent = msg;
+    el.setAttribute("aria-invalid", !!msg);
+    return !msg;
+  }
+  Object.keys(rules).forEach(id => document.getElementById(id).addEventListener("blur", () => check(id)));
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const bad = Object.keys(rules).filter(id => !check(id));
+    if (bad.length) { document.getElementById(bad[0]).focus(); return; }
+    status.textContent = "Preview only: this mockup form isn't connected yet. On the live site your message would now be sent to the chapter.";
+    status.classList.add("show");
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="logo.png" type="image/png" sizes="300x300">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0b0b0b">
+<title>Find a Chapter | Veterans Motorcycle Club Australia</title>
+<meta name="description" content="Veterans Motorcycle Club chapters across Australia, by state and territory.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .search{position:relative;max-width:520px;margin-top:30px}
+  .search input{width:100%;font:inherit;font-size:1.05rem;color:var(--text);background:var(--bg-2);border:1px solid #333;border-radius:999px;padding:16px 22px 16px 52px}
+  .search input:focus{outline:none;border-color:var(--yellow);box-shadow:0 0 0 3px rgba(255,210,31,.18)}
+  .search svg{position:absolute;left:20px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--muted);fill:none;stroke-width:2}
+  .states{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:20px;margin-top:40px}
+  .state{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .state header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;position:static;background:none;border:0;backdrop-filter:none}
+  .state h2{font-size:1.9rem}
+  .state header span{font:700 .72rem/1 Inter;letter-spacing:.14em;color:var(--yellow)}
+  .state ul{list-style:none;display:grid;gap:2px}
+  .state li{padding:10px 12px;border-radius:8px;display:flex;align-items:center;gap:10px;font-size:.96rem}
+  .state li::before{content:"";width:6px;height:6px;border-radius:50%;background:#555;flex:none}
+  .state li.home{background:rgba(255,210,31,.1);color:#fff;font-weight:600}
+  .state li.home::before{background:var(--yellow)}
+  .state li.home small{margin-left:auto;font:700 .65rem/1 Inter;letter-spacing:.12em;color:var(--yellow)}
+  .empty{display:none;margin-top:40px;color:var(--muted)}
+  mark{background:rgba(255,210,31,.3);color:inherit;border-radius:3px}
+</style>
+</head>
+<body data-page="about">
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="phero plain" style="padding:90px 0 40px">
+    <div class="wrap">
+      <div class="crumbs"><a href="contact.html">Contact</a> / Find a chapter</div>
+      <span class="eyebrow">Veterans MC across Australia</span>
+      <h1>Find a <em>chapter</em></h1>
+      <p class="lead">Looking for a club near you? Veterans Motorcycle Club chapters ride in every state and territory. Most are also on social media.</p>
+      <div class="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input id="q" type="search" placeholder="Search by town, region or state…" aria-label="Search chapters">
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="states" id="states"></div>
+      <p class="empty" id="empty">No chapters match that search. Try a state name, or <a href="contact.html" style="color:var(--yellow)">ask us</a> and we'll point you in the right direction.</p>
+    </div>
+  </section>
+
+  <section class="ctaband">
+    <div class="wrap">
+      <span class="eyebrow" style="color:#000;opacity:.7">Canberra &amp; region</span>
+      <h2>Riding near the ACT?</h2>
+      <p>The Federal Chapter rides out of Queanbeyan. Come and meet us at the Coffee Bunker or get in touch.</p>
+      <div class="ctas">
+        <a class="btn btn-dark" href="contact.html">Contact the Federal Chapter</a>
+        <a class="btn btn-line" href="coffee-bunker.html">The Coffee Bunker</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="site.js"></script>
+<script>
+  const data = {
+    "Australian Capital Territory": ["Federal"],
+    "New South Wales": ["New South Wales", "South West", "At Large", "Sydney", "Central Coast", "South Coast", "Central West", "Rock Valley", "Northern", "Southern Tablelands"],
+    "Victoria": ["Vietnam Veterans MC – Victoria", "Victoria", "Melbourne", "East Coast", "Gippsland", "Geelong", "Central"],
+    "Queensland": ["Gold Coast", "Moreton", "Queensland", "Dingo Beach", "North", "Central", "Far North", "Townsville", "West", "North Brisbane", "Capricorn Coast"],
+    "South Australia": ["South Australia", "Adelaide", "Mid North", "Adelaide Hills"],
+    "Western Australia": ["Western Australia"],
+    "Tasmania": ["Tasmania", "South"],
+    "Northern Territory": ["Darwin"]
+  };
+  const box = document.getElementById("states"), q = document.getElementById("q"), empty = document.getElementById("empty");
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  function render(term = "") {
+    const t = term.trim().toLowerCase(), hl = s => t ? s.replace(new RegExp(`(${esc(t)})`, "ig"), "<mark>$1</mark>") : s;
+    let shown = 0;
+    box.innerHTML = Object.entries(data).map(([state, list]) => {
+      const hit = state.toLowerCase().includes(t);
+      const items = list.filter(c => !t || hit || c.toLowerCase().includes(t));
+      if (!items.length) return "";
+      shown += items.length;
+      return `<article class="state"><header><h2>${hl(state)}</h2><span>${items.length} ${items.length === 1 ? "CHAPTER" : "CHAPTERS"}</span></header><ul>${
+        items.map(c => `<li class="${c === "Federal" ? "home" : ""}">${hl(c)}${c === "Federal" ? "<small>THAT'S US</small>" : ""}</li>`).join("")}</ul></article>`;
+    }).join("");
+    empty.style.display = shown ? "none" : "block";
+  }
+  q.addEventListener("input", () => render(q.value));
+  render();
+</script>
+</body>
+</html>

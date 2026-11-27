@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="logo.png" type="image/png" sizes="300x300">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0b0b0b">
+<title>Battle Honours | Veterans MC Federal Chapter</title>
+<meta name="description" content="Australia's battle honours: more than a century of service, from Gallipoli and the Western Front to Kokoda, Long Tan, East Timor, Afghanistan and peacekeeping.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .names{font-family:"Bebas Neue";font-size:clamp(1.3rem,2.4vw,1.8rem);letter-spacing:.06em;color:#6a6a6a;line-height:1.5;margin-top:26px}
+  .names b{font-weight:400;color:#fff}
+  .eras{position:sticky;top:72px;z-index:40;background:rgba(11,11,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .eras ul{display:flex;gap:4px;overflow-x:auto;list-style:none;padding:10px 0;scrollbar-width:none}
+  .eras ul::-webkit-scrollbar{display:none}
+  .eras a{display:block;white-space:nowrap;padding:9px 14px;border-radius:999px;font-size:.84rem;font-weight:500;text-decoration:none;color:#bdbdbd}
+  .eras a:hover{color:#fff;background:var(--bg-3)}
+  .eras a.on{background:var(--yellow);color:#000}
+
+  .timeline2{position:relative;padding:40px 0 20px}
+  .timeline2::before{content:"";position:absolute;left:calc(24px + 150px);top:0;bottom:0;width:2px;background:linear-gradient(var(--line),#3a3210,var(--line))}
+  .era{display:grid;grid-template-columns:150px 1fr;gap:56px;padding:56px 0;scroll-margin-top:130px;position:relative}
+  .era::before{content:"";position:absolute;left:150px;top:68px;width:14px;height:14px;margin-left:-6px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 6px var(--bg)}
+  .era .yrs{font-family:"Bebas Neue";font-size:1.7rem;line-height:1.1;color:var(--yellow);text-align:right;padding-top:2px}
+  .era .yrs small{display:block;font:600 .7rem/1.4 Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  .era h2{font-size:clamp(2.2rem,4.6vw,3.4rem)}
+  .era > div > p{color:#c9c9c9;max-width:68ch;margin-top:14px;font-size:1.03rem}
+  .honours{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:26px}
+  .honour{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .honour h3{font-size:1.7rem;margin-bottom:8px}
+  .honour p{color:var(--muted);font-size:.94rem}
+  .honour p+p{margin-top:10px}
+  .stat{display:inline-flex;align-items:baseline;gap:10px;margin-top:14px;padding:10px 14px;border-radius:10px;background:var(--bg);border:1px solid var(--line)}
+  .stat b{font-family:"Bebas Neue";font-size:1.7rem;color:#fff;line-height:1}
+  .stat span{font-size:.8rem;color:var(--muted)}
+  .remember-line{margin-top:20px;font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-size:1.2rem;color:#fff}
+
+  .valuesband{background:var(--yellow);color:#000;padding:26px 0}
+  .valuesband .row{display:flex;justify-content:center;gap:clamp(16px,5vw,64px);flex-wrap:wrap}
+  .valuesband span{font-family:"Bebas Neue";font-size:clamp(1.6rem,3.4vw,2.4rem);letter-spacing:.06em}
+
+  .legacy{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .legacy p{color:#c9c9c9}
+  .legacy p+p{margin-top:14px}
+  .vows{list-style:none;display:grid;gap:10px;margin-top:22px}
+  .vows li{font-family:"Bebas Neue";font-size:1.7rem;letter-spacing:.03em;padding-left:28px;position:relative}
+  .vows li::before{content:"";position:absolute;left:0;top:.45em;width:12px;height:12px;background:var(--yellow);transform:rotate(45deg)}
+  .learn{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:30px}
+
+  @media (max-width:900px){
+    .timeline2::before{left:31px}
+    .era{grid-template-columns:1fr;gap:12px;padding:40px 0 40px 36px}
+    .era::before{left:31px;top:50px}
+    .era .yrs{text-align:left}
+    .honours,.legacy{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body data-page="remembrance">
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="phero" style="background-image:url('https://www.vmcfederal.com.au/wp-content/uploads/2026/05/remembrance.jpg');padding:150px 0 90px">
+    <div class="wrap">
+      <span class="eyebrow">Courage · Endurance · Mateship · Sacrifice</span>
+      <h1>Australia's <em>battle honours</em></h1>
+      <p class="lead">Across more than a century, Australians have fought, served, protected, rebuilt and kept the peace in some of the hardest places in the world. Behind every honour are the people who served — those who came home, those who carried the effects of service for life, and those who never came home.</p>
+      <p class="names" aria-label="Notable battle honours"><b>Gallipoli</b> · Pozières · <b>Villers-Bretonneux</b> · Tobruk · <b>Kokoda</b> · Kapyong · <b>Long Tan</b> · Coral · <b>Balmoral</b></p>
+    </div>
+  </section>
+
+  <nav class="eras" aria-label="Eras">
+    <div class="wrap"><ul id="eranav">
+      <li><a href="#ww1">WWI</a></li><li><a href="#ww2">WWII</a></li><li><a href="#korea">Korea</a></li><li><a href="#malaya">Malaya &amp; Confrontation</a></li><li><a href="#vietnam">Vietnam</a></li><li><a href="#adf">Modern ADF</a></li><li><a href="#gulf">Gulf &amp; Somalia</a></li><li><a href="#timor">East Timor</a></li><li><a href="#afghanistan">Afghanistan</a></li><li><a href="#iraq">Iraq &amp; ISIS</a></li><li><a href="#peace">Peacekeeping</a></li><li><a href="#humanitarian">Humanitarian</a></li>
+    </ul></div>
+  </nav>
+
+  <div class="wrap">
+    <div class="timeline2">
+      <section class="era" id="ww1">
+        <div class="yrs">1914–1918<small>First World War</small></div>
+        <div>
+          <h2>The First World War</h2>
+          <p>Thousands of Australians volunteered for the Australian Imperial Force, serving at Gallipoli, on the Western Front and throughout the Middle East in a conflict that left an enduring mark on the nation.</p>
+          <div class="honours">
+            <article class="honour"><h3>Gallipoli</h3><p>On 25 April 1915, Australian and New Zealand troops landed on the Gallipoli peninsula. The campaign continued for eight months under extraordinary hardship. Though it didn't achieve the result the Allies sought, the courage, endurance and mateship shown there became part of Australia's national story.</p><div class="stat"><b>8,709</b><span>Australians died</span></div></article>
+            <article class="honour"><h3>The Western Front</h3><p>From 1916, Australian divisions fought in France and Belgium. Fromelles, Pozières, Bullecourt, Messines, Passchendaele, Villers-Bretonneux, Hamel and Mont St Quentin became names permanently linked to Australian service and sacrifice.</p><div class="stat"><b>60,000+</b><span>Australian lives lost in WWI, from a population under five million</span></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="era" id="ww2">
+        <div class="yrs">1939–1945<small>Second World War</small></div>
+        <div>
+          <h2>The Second World War</h2>
+          <p>Australians served across Europe, North Africa, the Mediterranean, the Middle East, South-East Asia and the Pacific — in Greece and Crete, Tobruk and El Alamein, Malaya and Singapore, Milne Bay, Kokoda and the wider New Guinea and Pacific campaigns.</p>
+          <div class="honours">
+            <article class="honour"><h3>Tobruk</h3><p>In 1941, Australian troops formed a major part of the Allied garrison defending the Libyan port of Tobruk, enduring months of siege, artillery fire and repeated attacks. They became famously known as the Rats of Tobruk.</p></article>
+            <article class="honour"><h3>Kokoda</h3><p>In 1942, Australian and Papuan forces fought to stop the Japanese advance across the Owen Stanley Range towards Port Moresby, through mountains, jungle, mud, disease and exhaustion. The courage and support of Papuan soldiers and carriers were critical.</p><div class="stat"><b>600+</b><span>Australians killed · more than 1,000 wounded</span></div></article>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="valuesband" aria-hidden="true"><div class="row"><span>Courage</span><span>Endurance</span><span>Mateship</span><span>Sacrifice</span></div></div>
+
+  <div class="wrap">
+    <div class="timeline2">
+      <section class="era" id="korea">
+        <div class="yrs">1950–1953<small>Korean War</small></div>
+        <div>
+          <h2>Korea</h2>
+          <p>Australia joined the United Nations effort in Korea after war broke out in 1950. Army, Navy and Air Force personnel served throughout.</p>
+          <div class="stat"><b>17,000+</b><span>served · 340 killed · more than 1,200 wounded</span></div>
+          <div class="honours">
+            <article class="honour"><h3>Kapyong</h3><p>In April 1951, soldiers of the 3rd Battalion, Royal Australian Regiment helped hold the Kapyong Valley during a major Chinese offensive, stopping a breakthrough towards Seoul.</p><p>Kapyong remains one of the most significant battle honours carried by the Royal Australian Regiment.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="era" id="malaya">
+        <div class="yrs">1948–1966<small>1948–60 · 1963–66</small></div>
+        <div>
+          <h2>Malaya &amp; Indonesian Confrontation</h2>
+          <p>Australian forces served in South-East Asia during the Malayan Emergency and later Indonesian Confrontation, supporting Commonwealth and Malaysian forces through jungle operations, maritime patrols, aviation and regional security. Much of this service happened far from public attention, but it remains an important chapter in Australia's post-war history.</p>
+        </div>
+      </section>
+
+      <section class="era" id="vietnam">
+        <div class="yrs">1962–1972<small>Vietnam War</small></div>
+        <div>
+          <h2>Vietnam</h2>
+          <p>Australians served in Vietnam in combat, training, aviation, naval, medical and support roles.</p>
+          <div class="stat"><b>60,000+</b><span>Australians served</span></div>
+          <div class="honours">
+            <article class="honour"><h3>Long Tan</h3><p>On 18 August 1966, D Company, 6th Battalion, Royal Australian Regiment fought a major action in a rubber plantation near Long Tan in Phuoc Tuy Province. Heavily outnumbered and fighting through torrential rain, they held their position with artillery support until a relief force arrived.</p><div class="stat"><b>18</b><span>Australians killed · 24 wounded</span></div></article>
+            <article class="honour"><h3>Coral &amp; Balmoral</h3><p>Between May and June 1968, Australian forces fought a series of major engagements around Fire Support Bases Coral and Balmoral, north-east of Saigon — some of the largest and most sustained combat Australians experienced in Vietnam.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="era" id="adf">
+        <div class="yrs">From 1976<small>Modern ADF</small></div>
+        <div>
+          <h2>The modern Australian Defence Force</h2>
+          <p>The ADF was formed in 1976, bringing the Navy, Army and Air Force together under one defence organisation. Since then, Australians have served in combat, peacekeeping, regional security, humanitarian emergencies and disaster response.</p>
+        </div>
+      </section>
+
+      <section class="era" id="gulf">
+        <div class="yrs">1990–1993<small>Gulf · Somalia</small></div>
+        <div>
+          <h2>The Gulf War &amp; Somalia</h2>
+          <div class="honours">
+            <article class="honour"><h3>The Gulf War · 1990–91</h3><p>Australia deployed naval forces to the Middle East after Iraq invaded Kuwait. Australian ships conducted interception, escort, surveillance and support operations in the Persian Gulf.</p></article>
+            <article class="honour"><h3>Somalia · 1992–93</h3><p>Under Operation Solace, Australian soldiers helped establish security around Baidoa so humanitarian aid could reach communities affected by conflict and famine.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="era" id="timor">
+        <div class="yrs">From 1999<small>East Timor · Timor-Leste</small></div>
+        <div>
+          <h2>East Timor &amp; Timor-Leste</h2>
+          <p>In 1999 Australia led the International Force East Timor (INTERFET) after violence surrounding East Timor's independence vote. Thousands of Australians served to restore security and support the East Timorese people, later returning during periods of instability and continuing to support the developing nation of Timor-Leste.</p>
+        </div>
+      </section>
+
+      <section class="era" id="afghanistan">
+        <div class="yrs">2001–2021<small>Afghanistan</small></div>
+        <div>
+          <h2>Afghanistan</h2>
+          <p>Australian forces served in special operations, reconstruction, mentoring and training, aviation, force protection, logistics and coalition support. Many more returned home carrying physical and psychological injuries.</p>
+          <div class="stat"><b>41</b><span>ADF personnel died on operations</span></div>
+          <p class="remember-line">We remember those who served, those who were wounded and those who never returned.</p>
+        </div>
+      </section>
+
+      <section class="era" id="iraq">
+        <div class="yrs">2003 onwards<small>Iraq · Syria</small></div>
+        <div>
+          <h2>Iraq &amp; the fight against Islamic State</h2>
+          <p>Australian forces took part in coalition operations in Iraq from 2003, and later returned to the Middle East as part of the international campaign against Islamic State.</p>
+          <div class="honours"><article class="honour"><h3>Operation Okra</h3><p>Australian personnel contributed air power, training, command, intelligence and support capabilities to coalition operations in Iraq and Syria.</p></article></div>
+        </div>
+      </section>
+
+      <section class="era" id="peace">
+        <div class="yrs">Since 1947<small>Peacekeeping</small></div>
+        <div>
+          <h2>Peacekeeping</h2>
+          <p>Soldiers, sailors, aviators, police and civilians have observed ceasefires, protected communities, supported elections, delivered aid and helped rebuild nations — in Indonesia, Kashmir, Cyprus, Cambodia, Rwanda, the Middle East, Bougainville, Timor-Leste, Solomon Islands, Sudan and South Sudan.</p>
+          <p>Peacekeeping differs from conventional warfare, but it demands the same courage, discipline, restraint, professionalism and commitment to others.</p>
+        </div>
+      </section>
+
+      <section class="era" id="humanitarian">
+        <div class="yrs">Ongoing<small>Humanitarian service</small></div>
+        <div>
+          <h2>Humanitarian service</h2>
+          <p>Across Australia and the Indo-Pacific, ADF personnel provide evacuation, engineering, medical, aviation, maritime, transport and logistics support after cyclones, floods, bushfires, earthquakes, tsunamis and other disasters.</p>
+          <p class="remember-line">Carrying a rifle, flying an aircraft, sailing a ship, rebuilding a road or helping a community recover — service remains service.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section class="pillars">
+    <div class="wrap legacy">
+      <div class="reveal">
+        <span class="eyebrow">More than names on a wall</span>
+        <h2>To veterans and their families, they represent people.</h2>
+        <p style="margin-top:18px">Young Australians who left their homes and families. People who relied on their mates in circumstances few of us will ever face. Generations who accepted the responsibility of service.</p>
+        <p>Some came home to parades. Others returned quietly. Some carried injuries that could be seen; others carried wounds that could not. And some never came home. That is why we remember.</p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Their legacy continues</span>
+        <p>Every generation inherits a legacy built by those who served before — not only battles won or medals awarded, but courage when things are hard, endurance when the road is long, mateship when someone needs support, and sacrifice when duty demands more than words.</p>
+        <p>For veterans, remembrance is personal: the names we recognise, the stories we tell, the mates we still think about and the empty places left by those who are gone.</p>
+        <ul class="vows">
+          <li>We honour all who served.</li>
+          <li>We remember those who never returned.</li>
+          <li>We stand beside those who still carry the cost of service.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="remember">
+    <div class="wrap reveal">
+      <svg class="poppy" viewBox="0 0 48 48" aria-hidden="true"><g fill="#c8102e"><circle cx="24" cy="13" r="10"/><circle cx="35" cy="24" r="10"/><circle cx="24" cy="35" r="10"/><circle cx="13" cy="24" r="10"/></g><circle cx="24" cy="24" r="5" fill="#111"/></svg>
+      <h2>We will remember them.</h2>
+      <div class="lest" style="margin-top:14px">Lest we forget</div>
+      <div class="learn">
+        <a class="btn btn-ghost" href="https://www.awm.gov.au/" target="_blank" rel="noopener">Australian War Memorial</a>
+        <a class="btn btn-ghost" href="https://www.defence.gov.au/" target="_blank" rel="noopener">Department of Defence</a>
+        <a class="btn btn-ghost" href="https://www.dva.gov.au/" target="_blank" rel="noopener">Department of Veterans' Affairs</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="site.js"></script>
+<script>
+  const el = [...document.querySelectorAll("#eranav a")];
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    el.forEach(a => a.classList.toggle("on", a.hash === "#" + e.target.id));
+    const on = document.querySelector("#eranav a.on"); if (on) on.scrollIntoView({ block: "nearest", inline: "center" });
+  }), { rootMargin: "-40% 0px -55% 0px" });
+  document.querySelectorAll(".era").forEach(s => spy.observe(s));
+</script>
+</body>
+</html>

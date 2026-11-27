@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="logo.png" type="image/png" sizes="300x300">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0b0b0b">
+<title>Anzac Day 2026 — Photos | Veterans MC Federal Chapter</title>
+<meta name="description" content="Photos from Anzac Day 2026 with Veterans MC Federal Chapter. Lest we forget.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .date25{display:inline-flex;align-items:baseline;gap:14px;margin-bottom:10px}
+  .date25 b{font-family:"Bebas Neue";font-size:5rem;line-height:.8;color:var(--yellow)}
+  .date25 span{font:700 .85rem/1.4 Inter;letter-spacing:.16em;text-transform:uppercase}
+  .next2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media (max-width:800px){.next2{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="remembrance">
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="phero" style="background-image:url('https://www.vmcfederal.com.au/wp-content/uploads/2026/06/anz2601-1024x768.jpg');padding:150px 0 90px">
+    <div class="wrap">
+      <div class="crumbs"><a href="battle-honours.html">Remembrance</a> / Anzac Day 2026</div>
+      <div class="date25"><b>25</b><span>April<br>2026</span></div>
+      <h1>Anzac Day <em>2026</em></h1>
+      <p class="lead">The Federal Chapter came together to remember those who served — and those who never came home.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#gallery">View the photos</a>
+        <a class="btn btn-ghost" href="anzac-day-traditions.html">Our Anzac Day traditions</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" style="padding-top:40px">
+    <div class="wrap">
+      <div class="head reveal" style="margin-bottom:0">
+        <div><span class="eyebrow">On the day</span><h2>Photo gallery</h2></div>
+        <p class="muted" style="max-width:44ch">Tap any photo to view it full size. Use the arrow keys or swipe to move through the set.</p>
+      </div>
+      <div id="gal"></div>
+    </div>
+  </section>
+
+  <section class="remember">
+    <div class="wrap reveal">
+      <svg class="poppy" viewBox="0 0 48 48" aria-hidden="true"><g fill="#c8102e"><circle cx="24" cy="13" r="10"/><circle cx="35" cy="24" r="10"/><circle cx="24" cy="35" r="10"/><circle cx="13" cy="24" r="10"/></g><circle cx="24" cy="24" r="5" fill="#111"/></svg>
+      <span class="eyebrow">The Ode</span>
+      <p class="ode">They shall grow not old, as we that are left grow old;<br>Age shall not weary them, nor the years condemn.<br>At the going down of the sun and in the morning,<br>we will remember them.</p>
+      <div class="lest">Lest we forget</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap next2">
+      <a class="card reveal" href="anzac-day-traditions.html">
+        <div class="body"><span class="meta">Tradition</span><h3>The Gunfire Breakfast</h3><p>Why a simple pre-dawn meal still matters to the Veterans Motorcycle Club on Anzac Day.</p><span class="link-arrow">Read the story</span></div>
+      </a>
+      <a class="card reveal" href="battle-honours.html">
+        <div class="body"><span class="meta">Remembrance</span><h3>Australia's battle honours</h3><p>From Gallipoli to Afghanistan — more than a century of Australian service.</p><span class="link-arrow">Read more</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="site.js"></script>
+<script>
+  const U = "https://www.vmcfederal.com.au/wp-content/uploads/2026/06/";
+  const photos = Array.from({ length: 18 }, (_, i) => {
+    const n = String(i + 1).padStart(2, "0"), ext = i === 0 ? "jpg" : "jpeg";
+    return { thumb: `${U}anz26${n}-1024x768.${ext}`, full: `${U}anz26${n}.${ext}` };
+  });
+  VMC.gallery(document.getElementById("gal"), photos, { initial: 18, label: "Anzac Day 2026 photo" });
+</script>
+</body>
+</html>

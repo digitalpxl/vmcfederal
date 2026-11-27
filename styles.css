@@ -1,0 +1,285 @@
+  :root{
+    --bg:#0b0b0b; --bg-2:#141414; --bg-3:#1c1c1c; --line:#2a2a2a;
+    --text:#ededed; --muted:#a3a3a3; --yellow:#ffd21f; --yellow-d:#e0b800;
+    --radius:14px; --max:1180px;
+    --img:"https://www.vmcfederal.com.au/wp-content/uploads";
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{background:var(--bg);color:var(--text);font:400 17px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  h1,h2,h3,.display{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;letter-spacing:.02em;line-height:1}
+  h2{font-size:clamp(2.4rem,5vw,3.6rem)}
+  h3{font-size:1.75rem}
+  .eyebrow{font:600 .78rem/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px;display:block}
+  .lead{font-size:1.15rem;color:#cfcfcf;max-width:62ch}
+  .muted{color:var(--muted)}
+  section{padding:96px 0}
+  .skip{position:absolute;left:-999px;top:8px;background:var(--yellow);color:#000;padding:8px 14px;z-index:100}
+  .skip:focus{left:8px}
+  :focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:999px;font:700 .9rem/1 Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:.2s}
+  .btn-primary{background:var(--yellow);color:#000}
+  .btn-primary:hover{background:#fff}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.4);color:#fff}
+  .btn-ghost:hover{border-color:var(--yellow);color:var(--yellow)}
+  .link-arrow{color:var(--yellow);font-weight:600;text-decoration:none;font-size:.95rem}
+  .link-arrow::after{content:" →";transition:.2s;display:inline-block}
+  .link-arrow:hover::after{transform:translateX(4px)}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:rgba(11,11,11,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand img{width:46px;height:46px}
+  .brand span{font-family:"Bebas Neue";font-size:1.45rem;letter-spacing:.04em;line-height:1}
+  .brand small{display:block;font:600 .62rem/1.2 Inter;letter-spacing:.2em;color:var(--yellow)}
+  .menu{display:flex;align-items:center;gap:4px;list-style:none}
+  .menu > li{position:relative}
+  .menu a,.brand span,.nav .btn{white-space:nowrap}
+  .menu a{display:block;padding:10px 14px;font-size:.88rem;font-weight:500;text-decoration:none;color:#d6d6d6;border-radius:8px}
+  .menu a:hover{color:#fff;background:var(--bg-3)}
+  .menu .has-sub > a::after{content:"▾";margin-left:6px;font-size:.7em}
+  .sub{position:absolute;top:100%;left:0;min-width:230px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:8px;list-style:none;opacity:0;visibility:hidden;transform:translateY(6px);transition:.18s}
+  .has-sub:hover .sub,.has-sub:focus-within .sub{opacity:1;visibility:visible;transform:none}
+  .sub small{display:block;color:var(--muted);font-size:.75rem}
+  .nav .btn{padding:11px 18px;font-size:.78rem}
+  .burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+
+  /* Hero */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;padding:0 0 88px;
+    background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.55) 55%,var(--bg) 100%),
+    url("https://www.vmcfederal.com.au/wp-content/uploads/2026/05/034e1cb2aaabbdb68003de60b2b98900_WarMemorialCanberra.jpg") center 30%/cover no-repeat}
+  .hero h1{font-size:clamp(3.6rem,10vw,8rem);text-shadow:0 4px 30px rgba(0,0,0,.6)}
+  .hero h1 em{font-style:normal;color:var(--yellow);display:block}
+  .hero .tag{font:700 .9rem/1 Inter;letter-spacing:.32em;text-transform:uppercase;margin:22px 0 18px;color:#fff}
+  .hero .tag b{color:var(--yellow)}
+  .hero p{max-width:56ch;font-size:1.15rem;color:#e2e2e2}
+  .hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+
+  /* Values strip */
+  .values{background:var(--yellow);color:#000;padding:22px 0;overflow:hidden}
+  .values .row{display:flex;justify-content:center;gap:clamp(20px,6vw,80px);flex-wrap:wrap}
+  .values span{font-family:"Bebas Neue";font-size:clamp(1.6rem,3.5vw,2.4rem);letter-spacing:.06em}
+  .values span+span::before{content:"✦";margin-right:clamp(20px,6vw,80px);font-size:.6em;vertical-align:middle}
+
+  /* Intro */
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+  .split p+p{margin-top:16px}
+  .photo-stack{position:relative}
+  .photo-stack img{border-radius:var(--radius);width:100%;aspect-ratio:4/5;object-fit:cover}
+  .photo-stack .inset{position:absolute;width:48%;aspect-ratio:1;left:-40px;bottom:-40px;border:6px solid var(--bg);box-shadow:0 20px 40px rgba(0,0,0,.5)}
+  .pull{margin-top:28px;padding:18px 22px;border-left:3px solid var(--yellow);background:var(--bg-2);border-radius:0 10px 10px 0;font-weight:600}
+
+  /* Pillars */
+  .pillars{background:var(--bg-2)}
+  .head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .pillar{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;transition:.25s}
+  .pillar:hover{border-color:var(--yellow);transform:translateY(-4px)}
+  .pillar .ico{width:48px;height:48px;border-radius:12px;background:rgba(255,210,31,.12);display:grid;place-items:center;margin-bottom:20px}
+  .pillar .ico svg{width:24px;height:24px;stroke:var(--yellow);fill:none;stroke-width:1.8}
+  .pillar h3{margin-bottom:10px}
+  .pillar p{color:var(--muted);font-size:.96rem}
+
+  /* Featured event */
+  .feature{position:relative;border-radius:22px;overflow:hidden;min-height:440px;display:flex;align-items:center;
+    background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.7) 45%,rgba(0,0,0,.1) 100%),
+    url("https://www.vmcfederal.com.au/wp-content/uploads/2026/07/007EagleHawk_DSC0135-1024x576-1.jpg") center/cover}
+  .feature .inner{padding:56px;max-width:600px}
+  .feature h2{font-size:clamp(2.8rem,6vw,4.4rem)}
+  .feature p{margin:16px 0 28px;color:#d8d8d8}
+  .chip{display:inline-block;background:var(--yellow);color:#000;font:700 .72rem/1 Inter;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border-radius:6px;margin-bottom:18px}
+  .past{display:flex;gap:18px;margin-top:22px;font-size:.9rem}
+  .past a{color:var(--muted)} .past a:hover{color:#fff}
+
+  /* Cards */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:.25s}
+  .card:hover{border-color:#444;transform:translateY(-4px)}
+  .card img{aspect-ratio:16/10;object-fit:cover;width:100%;transition:.5s}
+  .card:hover img{transform:scale(1.04)}
+  .card .imgbox{overflow:hidden}
+  .card .body{padding:24px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card .body p{color:var(--muted);font-size:.95rem;flex:1}
+  .card .meta{font:600 .72rem/1 Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow)}
+
+  /* Media */
+  .media{background:var(--bg-2)}
+  .videos{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .video{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/9;background:#000;cursor:pointer;border:0;padding:0;width:100%}
+  .video img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:.3s}
+  .video:hover img{opacity:1}
+  .video .play{position:absolute;inset:0;margin:auto;width:76px;height:76px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;transition:.2s}
+  .video:hover .play{transform:scale(1.08)}
+  .video .play::before{content:"";border-left:22px solid #000;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px}
+  .video .cap{position:absolute;left:18px;bottom:16px;font-family:"Bebas Neue";font-size:1.5rem;color:#fff;text-shadow:0 2px 10px #000}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+  /* Remembrance */
+  .remember{position:relative;text-align:center;padding:130px 0;
+    background:linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.9)),url("https://www.vmcfederal.com.au/wp-content/uploads/2026/05/remembrance.jpg") center/cover fixed}
+  .poppy{width:44px;height:44px;margin:0 auto 22px}
+  .ode{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-size:clamp(1.25rem,2.4vw,1.6rem);line-height:1.7;color:#e8e8e8;margin:28px auto 34px;max-width:48ch}
+  .lest{font-family:"Bebas Neue";font-size:2.4rem;letter-spacing:.12em;color:var(--yellow)}
+  .remember .ctas{display:flex;justify-content:center;gap:12px;margin-top:36px;flex-wrap:wrap}
+
+  /* Help band */
+  .help{background:var(--bg-3);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:44px 0}
+  .help .row{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+  .help h3{font-size:2rem}
+  .help p{color:var(--muted);max-width:60ch}
+  .help .nums{display:flex;gap:14px;flex-wrap:wrap}
+  .num{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 20px;text-decoration:none}
+  .num b{display:block;font-size:1.25rem;color:var(--yellow)}
+  .num span{font-size:.8rem;color:var(--muted)}
+
+  /* Sponsors */
+  .major{display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:32px 36px;margin-bottom:48px}
+  .major img{height:80px;width:auto;background:#fff;border-radius:10px;padding:10px}
+  .logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+  .logo{background:#f4f4f4;border-radius:12px;height:96px;display:grid;place-items:center;padding:16px;transition:.2s}
+  .logo img{max-height:62px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.85;transition:.2s}
+  .logo:hover img{filter:none;opacity:1}
+  .logo:hover{transform:translateY(-3px)}
+  .supports{margin-top:56px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;flex-direction:row-reverse;justify-content:flex-end}
+  .supports img{height:72px;width:auto;border-radius:10px}
+
+  /* Footer */
+  footer{background:#050505;border-top:1px solid var(--line);padding:64px 0 32px;font-size:.92rem}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+  footer h4{font:700 .75rem/1 Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);margin-bottom:16px}
+  footer ul{list-style:none;display:grid;gap:10px}
+  footer a{color:var(--muted);text-decoration:none} footer a:hover{color:#fff}
+  .social{display:flex;gap:10px;margin-top:18px}
+  .social a{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center}
+  .social a:hover{border-color:var(--yellow)}
+  .social svg{width:18px;height:18px;fill:#ddd}
+  .fbottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#6f6f6f;font-size:.82rem}
+
+  footer{overflow:hidden}
+  footer .fbottom{margin-top:0}
+  .bigmark{font-family:"Bebas Neue",Impact,sans-serif;font-size:21vw;line-height:.78;text-align:center;white-space:nowrap;
+    letter-spacing:.01em;margin:48px 0 32px;user-select:none;
+    background:linear-gradient(180deg,#262626 0%,#141414 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+  /* Responsive */
+  @media (max-width:1000px){
+    .grid4{grid-template-columns:1fr 1fr}
+    .fgrid{grid-template-columns:1fr 1fr}
+    .major{grid-template-columns:1fr;text-align:left}
+  }
+  @media (max-width:1060px){
+    .burger{display:block}
+    .menu{position:fixed;inset:72px 0 auto 0;flex-direction:column;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 20px 24px;gap:0;display:none;max-height:calc(100vh - 72px);overflow:auto}
+    .menu.open{display:flex}
+    .menu a{padding:14px 8px;font-size:1rem}
+    .sub{position:static;opacity:1;visibility:visible;transform:none;border:0;background:none;padding:0 0 0 14px}
+    .nav > .btn{display:none}
+  }
+  @media (max-width:860px){
+    .split,.grid3,.videos{grid-template-columns:1fr}
+    .photo-stack .inset{left:auto;right:-10px;bottom:-30px}
+    .feature .inner{padding:36px 28px}
+    .remember{background-attachment:scroll}
+    section{padding:72px 0}
+  }
+  @media (max-width:560px){
+    .grid4,.fgrid{grid-template-columns:1fr}
+    .hero{min-height:80vh}
+  }
+
+  /* Shared: event pages */
+  .menu a.active{color:var(--yellow)}
+  .ctaband{background:var(--yellow);color:#000;text-align:center;padding:88px 0}
+  .ctaband h2{font-size:clamp(2.6rem,6vw,4.6rem)}
+  .ctaband p{max-width:52ch;margin:16px auto 30px;font-size:1.08rem}
+  .ctaband .btn-dark{background:#000;color:var(--yellow)}
+  .ctaband .btn-dark:hover{background:#222}
+  .ctaband .btn-line{border:1.5px solid #000;color:#000}
+  .ctaband .btn-line:hover{background:rgba(0,0,0,.08)}
+  .ctaband .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .chips span{border:1px solid var(--line);background:var(--bg-2);border-radius:999px;padding:9px 16px;font-size:.88rem;color:#cfcfcf}
+  /* Shared: photo gallery + lightbox */
+  .gallery{columns:4 240px;column-gap:12px;margin-top:40px}
+  .gallery button{display:block;width:100%;margin:0 0 12px;padding:0;border:0;background:var(--bg-2);border-radius:10px;overflow:hidden;cursor:zoom-in;break-inside:avoid}
+  .gallery img{width:100%;height:auto;display:block;transition:transform .5s}
+  .gallery button:hover img{transform:scale(1.04)}
+  .gallery button.hide{display:none}
+  .more{text-align:center;margin-top:28px}
+  .more button{cursor:pointer;background:none;font:inherit}
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:84vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  .lb button{position:absolute;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;width:52px;height:52px;border-radius:50%;font-size:1.4rem;cursor:pointer}
+  .lb button:hover{background:var(--yellow);color:#000}
+  .lb .prev{left:20px;top:50%;transform:translateY(-50%)}
+  .lb .next{right:20px;top:50%;transform:translateY(-50%)}
+  .lb .close{top:20px;right:20px}
+  .lb .count{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:var(--muted);font-size:.88rem;letter-spacing:.1em}
+  @media (max-width:560px){.lb .prev,.lb .next{top:auto;bottom:60px;transform:none}}
+
+  /* Shared: inner-page hero */
+  .phero{position:relative;padding:110px 0 80px;background-size:cover;background-position:center;overflow:hidden}
+  .phero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.7) 60%,var(--bg))}
+  .phero.plain::before{background:radial-gradient(60% 80% at 80% 20%,rgba(255,210,31,.10),transparent 70%)}
+  .phero .wrap{position:relative}
+  .phero h1{font-size:clamp(3.4rem,9vw,7rem);line-height:.92}
+  .phero h1 em{font-style:normal;color:var(--yellow)}
+  .phero .lead{margin-top:20px}
+  .phero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .crumbs{font-size:.82rem;color:var(--muted);margin-bottom:18px}
+  .crumbs a{color:var(--muted);text-decoration:none} .crumbs a:hover{color:var(--yellow)}
+
+  /* Shared: long-form reading */
+  .prose{max-width:720px}
+  .prose h2{font-size:clamp(2rem,4vw,2.8rem);margin:56px 0 16px}
+  .prose h2:first-child{margin-top:0}
+  .prose h3{font-size:1.6rem;margin:34px 0 10px;color:var(--yellow)}
+  .prose p{color:#cfcfcf;font-size:1.06rem;line-height:1.8}
+  .prose p+p{margin-top:16px}
+  .prose .dropcap::first-letter{font-family:"Bebas Neue";float:left;font-size:4.6rem;line-height:.8;padding:8px 12px 0 0;color:var(--yellow)}
+  .lcard{background:var(--bg);border:1px solid var(--line);border-top:3px solid var(--yellow);border-radius:var(--radius);padding:28px 24px}
+  .lcard h3{margin:14px 0 10px}
+  .lestband{text-align:center;padding:100px 0}
+  .lestband .lest{font-family:"Bebas Neue";font-size:clamp(2.6rem,6vw,4.4rem);letter-spacing:.12em;color:var(--yellow)}
+  /* Shared: filter chips */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
+  .filters button{cursor:pointer;font:600 .85rem/1 Inter;padding:11px 16px;border-radius:999px;border:1px solid var(--line);background:var(--bg-2);color:#d0d0d0;transition:.2s}
+  .filters button:hover{border-color:#555;color:#fff}
+  .filters button[aria-pressed="true"]{background:var(--yellow);border-color:var(--yellow);color:#000}
+  .filters button span{opacity:.6;margin-left:6px;font-weight:500}
+  /* Shared: legal pages */
+  .legal{display:grid;grid-template-columns:230px 1fr;gap:64px;align-items:start}
+  .legal .toc{position:sticky;top:110px;font-size:.86rem}
+  .legal .toc b{display:block;font:700 .7rem/1 Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px}
+  .legal .toc ol{list-style:none;display:grid;gap:2px;border-left:1px solid var(--line);counter-reset:t}
+  .legal .toc a{display:block;padding:6px 0 6px 16px;margin-left:-1px;border-left:2px solid transparent;color:var(--muted);text-decoration:none}
+  .legal .toc a:hover{color:#fff}
+  .legal .toc a.on{color:#fff;border-left-color:var(--yellow)}
+  .legal .prose section{scroll-margin-top:110px}
+  .legal .prose h2{font-size:clamp(1.8rem,3.4vw,2.4rem);margin:48px 0 12px}
+  .legal .prose ul{color:#cfcfcf;padding-left:20px;margin:12px 0;line-height:1.8}
+  .legal .prose li+li{margin-top:4px}
+  .legal .prose a{color:var(--yellow)}
+  .legal .prose strong{color:#fff}
+  .ph-fill{background:rgba(255,210,31,.16);color:var(--yellow);border:1px dashed rgba(255,210,31,.5);border-radius:4px;padding:0 5px;font-weight:600;-webkit-box-decoration-break:clone;box-decoration-break:clone;overflow-wrap:anywhere}
+  .draftnote{display:flex;gap:14px;align-items:flex-start;background:rgba(255,210,31,.07);border:1px solid #3a3210;border-radius:14px;padding:18px 20px;margin-top:28px;max-width:760px;font-size:.92rem;color:#e6dcb4}
+  .draftnote b{color:var(--yellow)}
+  .meta-row{display:flex;gap:24px;flex-wrap:wrap;margin-top:22px;font-size:.88rem;color:var(--muted)}
+  .meta-row span b{color:#fff;font-weight:600}
+  .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 10px}
+  .summary div{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .summary b{display:block;font-family:"Bebas Neue";font-size:1.35rem;letter-spacing:.03em;color:#fff;margin-bottom:4px}
+  .summary span{font-size:.88rem;color:var(--muted);line-height:1.5;display:block}
+  @media (max-width:960px){.legal{grid-template-columns:1fr}.legal .toc{display:none}.summary{grid-template-columns:1fr}}
